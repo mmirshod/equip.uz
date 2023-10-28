@@ -76,7 +76,7 @@ def logout():
 
 
 @app.route("/add_news", methods=['GET', 'POST'])
-def add_news():
+def news_add():
     if request.method == 'POST' or request.method == 'post':
         pic = request.files.get('post_pic')
         pic_name = 'news/' + str(uuid.uuid4()) + "_" + secure_filename(pic.filename)
@@ -104,13 +104,13 @@ def add_news():
 
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('base'))
+        return redirect(url_for('news_list'))
 
     return render_template('forms/add_news.html')
 
 
 @app.route("/news/<int:news_id>/edit", methods=['GET', 'PUT'])
-def edit_news(news_id: int):
+def news_edit(news_id: int):
     if request.method == 'PUT':
         post = db.get_or_404(Post, news_id)
         post.content = request.form.get('post_content')
@@ -124,23 +124,23 @@ def edit_news(news_id: int):
         post.pic = pic_name
 
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('news_list'))
 
     return render_template('forms/edit_news.html')
 
 
 @app.route("/news/<int:news_id>/delete", methods=['GET', 'DELETE'])
-def delete_news(news_id: int):
+def news_delete(news_id: int):
     post = db.get_or_404(Post, news_id)
     os.remove(join(app.config['UPLOAD_FOLDER'], post.pic))
 
     db.session.delete(post)
     db.session.commit()
-    return redirect(url_for('news'))
+    return redirect(url_for('news_list'))
 
 
 @app.route('/news/<int:news_id>')
-def single_news(news_id: int) -> str:
+def news_detail(news_id: int) -> str:
     post = db.session.get(Post, news_id)
 
     return render_template('news-single.html',
@@ -153,7 +153,7 @@ def single_news(news_id: int) -> str:
 
 
 @app.route("/news")
-def news() -> str:
+def news_list() -> str:
     return render_template("news-right-sidebar.html", posts=Post.query.all())
 
 
@@ -165,17 +165,18 @@ def news_by_tag(tag_id: int):
 
 
 @app.route('/machines')
-def machines_list():
-    machines = Machine.query.all()
-
-    return render_template('projects.html')
+def machine_list():
+    return render_template('projects.html', machines=db.session.execute(db.select(Machine)).scalars())
 
 
 @app.route("/machines/<int:machine_id>")
-def single_machine(machine_id: int):
-    machine = db.get_or_404(Machine, machine_id)
+def machine_detail(machine_id: int):
+    return render_template('projects-single.html', machine=db.get_or_404(Machine, machine_id))
 
-    return render_template('projects-single.html')
+
+@app.route("/machines/add")
+def machine_add():
+    ...
 
 
 @app.route('/about')
@@ -196,6 +197,11 @@ def faq():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+
+@app.errorhandler(404)
+def not_found(e):
+    render_template('404.html')
 
 
 if __name__ == '__main__':

@@ -150,11 +150,11 @@
                       </ul>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('machines_list') }}">Used Machines</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('machine_list') }}">Used Machines</a></li>
 
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('news') }}">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('news_list') }}">News</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
                   </ul>
                 </div>
@@ -246,7 +246,7 @@
                   <li><a href="{{ url_for("about") }}">About</a></li>
                   <li><a href="{{ url_for("team") }}">Our people</a></li>
                   <li><a href="{{ url_for("faq") }}">Faq</a></li>
-                  <li><a href="{{ url_for("news") }}">News</a></li>
+                  <li><a href="{{ url_for("news_list") }}">News</a></li>
                   <li><a href="{{ url_for("contact") }}">Contact</a></li>
                   {%  if session %}
                   <li><a href="{{ url_for('logout') }}">Logout</a></li>
