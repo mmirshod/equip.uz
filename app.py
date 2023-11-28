@@ -41,7 +41,6 @@ def base():
 def index():
     posts = [_[0].short() for _ in
              db.session.execute(db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()]
-    print(posts)
     return render_template("index.html", news=posts)
 
 
@@ -75,7 +74,7 @@ def logout():
     )
 
 
-@app.route("/add_news", methods=['GET', 'POST'])
+@app.route("/news_add", methods=['GET', 'POST'])
 def news_add():
     if request.method == 'POST' or request.method == 'post':
         pic = request.files.get('post_pic')
@@ -166,6 +165,13 @@ def news_by_tag(tag_id: int):
 
 @app.route('/machines')
 def machine_list():
+    machine_type = request.args.get('type', None)
+    if machine_type:
+        stmt = db.select(Machine).where(Machine.type.name == machine_type)
+        machines = db.session.execute(stmt).scalars().all()
+
+        return render_template('projects.html', machines=machines)
+
     return render_template('projects.html', machines=db.session.execute(db.select(Machine)).scalars())
 
 
@@ -176,6 +182,16 @@ def machine_detail(machine_id: int):
 
 @app.route("/machines/add")
 def machine_add():
+    ...
+
+
+@app.route("/machines/delete/<int:machine_id>")
+def machine_delete(machine_id: int):
+    ...
+
+
+@app.route("/machines/edit/<int:machine_id>")
+def machine_edit(machine_id: int):
     ...
 
 
