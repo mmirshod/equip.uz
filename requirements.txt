@@ -1,4 +1,4 @@
-﻿Authlib==1.2.1
+Authlib==1.2.1
 Flask==3.0.0
 Flask-CKEditor==0.4.6
 Flask-SQLAlchemy==3.0.5
