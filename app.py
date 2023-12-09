@@ -41,7 +41,6 @@ def base():
 def index():
     posts = [_[0].short() for _ in
              db.session.execute(db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()]
-    print(posts)
     return render_template("index.html", news=posts)
 
 
@@ -75,7 +74,7 @@ def logout():
     )
 
 
-@app.route("/news/add", methods=['GET', 'POST'])
+@app.route("/news_add", methods=['GET', 'POST'])
 def news_add():
     if request.method == 'POST' or request.method == 'post':
         pic = request.files.get('post_pic')
@@ -85,7 +84,7 @@ def news_add():
         tag_names = request.form.get('post_tags').split(',')
         tags = []
         for tag_name in tag_names:
-            tag = db.session.execute(db.select(Tag).where(Tag.name == tag_name)).fetchone()[0]
+            tag = db.session.execute(db.select(Tag).where(Tag.name == tag_name)).fetchone()
             if not tag:
                 tag = Tag(name=tag_name)
                 db.session.add(tag)
@@ -139,6 +138,7 @@ def news_delete(news_id: int):
     return redirect(url_for('news_list'))
 
 
+
 @app.route('/news/<int:news_id>')
 def news_detail(news_id: int) -> str:
     post = db.session.get(Post, news_id)
@@ -147,15 +147,20 @@ def news_detail(news_id: int) -> str:
                            post=post,
                            recent_news=[_[0].short() for _ in db.session.execute(
                                    db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()],
-                           all_tags=[_[0].format for _ in db.session.execute(
+                           all_tags=[_[0].format() for _ in db.session.execute(
                                    db.select(Tag).order_by(Tag.name.desc())).fetchall()]
                            )
 
 
 @app.route("/news")
 def news_list() -> str:
-    return render_template("news-right-sidebar.html", posts=Post.query.all())
+    posts = [_[0].short() for _ in
+             db.session.execute(db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()]
+    return render_template("news-right-sidebar.html", news=posts)
 
+@app.route("/prob")
+def prob():
+    return render_template("machienes/rollers/1.html")
 
 @app.route('/news/tag=<int:tag_id>')
 def news_by_tag(tag_id: int):
@@ -166,7 +171,15 @@ def news_by_tag(tag_id: int):
 
 @app.route('/machines')
 def machine_list():
+    machine_type = request.args.get('type', None)
+    if machine_type:
+        stmt = db.select(Machine).where(Machine.type.name == machine_type)
+        machines = db.session.execute(stmt).scalars().all()
+
+        return render_template('projects.html', machines=machines)
+
     return render_template('projects.html', machines=db.session.execute(db.select(Machine)).scalars())
+
 
 
 @app.route("/machines/<int:machine_id>")
@@ -176,6 +189,16 @@ def machine_detail(machine_id: int):
 
 @app.route("/machines/add")
 def machine_add():
+    ...
+
+
+@app.route("/machines/delete/<int:machine_id>")
+def machine_delete(machine_id: int):
+    ...
+
+
+@app.route("/machines/edit/<int:machine_id>")
+def machine_edit(machine_id: int):
     ...
 
 

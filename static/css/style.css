@@ -81,7 +81,12 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.left-bordered-div {
+  height: 110px;
+  border-left: 3px solid rgb(154, 95, 22); /* 2px width solid black left border */
+  padding: 10px; /* Optional: Add some padding to the content inside the border */
+  margin-left: 10px;
+}
 .body-inner {
   position: relative;
   overflow: hidden;

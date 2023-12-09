@@ -32,7 +32,7 @@ FACEBOOK: https://www.facebook.com/themefisher
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center">
                   <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
-                  <li class="breadcrumb-item"><a href="{{ url_for('news') }}">News</a></li>
+                  <li class="breadcrumb-item"><a href="{{ url_for('news_list') }}">News</a></li>
                 </ol>
               </nav>
             </div>
@@ -217,7 +217,7 @@ FACEBOOK: https://www.facebook.com/themefisher
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">
-                    <a href="{{ url_for('single_news', news_id=n['id']) }}">{{ n['title'] }}</a>
+                    <a href="{{ url_for('news_detail', news_id=n['id']) }}">{{ n['title'] }}</a>
                   </h4>
                 </div>
               </li><!-- 1st post end-->

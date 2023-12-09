@@ -2,39 +2,36 @@
 <html lang="en">
 
 <head>
-
   <!-- Basic Page Needs
 ================================================== -->
   <meta charset="utf-8">
-  <title>RC.Equip</title>
+  <title>{% block title %} {% endblock %} | RC.Equip</title>
 
   <!-- Mobile Specific Metas
 ================================================== -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Construction Html5 Template">
+  <meta name="description" content="RC Equip, base template">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name=author content="Themefisher">
-  <meta name=generator content="Themefisher Constra HTML Template v1.0">
 
   <!-- Favicon
 ================================================== -->
-<link rel="icon" type="image/png" href="{{ url_for('static', filename="images/equipuz.gif") }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename="images/equipuz.gif") }}">
 
-<!-- CSS
+  <!-- CSS
 ================================================== -->
-<!-- Bootstrap -->
-<link rel="stylesheet" href="{{ url_for('static', filename="plugins/bootstrap/bootstrap.min.css") }}">
-<!-- FontAwesome -->
-<link rel="stylesheet" href="{{ url_for('static', filename="plugins/fontawesome/css/all.min.css") }}">
-<!-- Animation -->
-<link rel="stylesheet" href="{{ url_for('static', filename="plugins/animate-css/animate.css") }}">
-<!-- slick Carousel -->
-<link rel="stylesheet" href="{{ url_for('static', filename="plugins/slick/slick.css") }}">
-<link rel="stylesheet" href="{{ url_for('static', filename="plugins/slick/slick-theme.css") }}">
-<!-- Colorbox -->
-<link rel="stylesheet" href="{{ url_for('static', filename="plugins/colorbox/colorbox.css") }}">
-<!-- Template styles-->
-<link rel="stylesheet" href="{{ url_for('static', filename="css/style.css") }}">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/bootstrap/bootstrap.min.css") }}">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/fontawesome/css/all.min.css") }}">
+  <!-- Animation -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/animate-css/animate.css") }}">
+  <!-- slick Carousel -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/slick/slick.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/slick/slick-theme.css") }}">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/colorbox/colorbox.css") }}">
+  <!-- Template styles-->
+  <link rel="stylesheet" href="{{ url_for('static', filename="css/style.css") }}">
 
 </head>
 
@@ -104,19 +101,19 @@
       </div><!-- Row end -->
     </div><!-- Container end -->
 
-    <div class="site-navigation" style="background-color:#23282d;">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <nav class="navbar navbar-expand-lg navbar-dark p-0">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            
-              <div id="navbar-collapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav mr-auto">
-                  <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Главная</a></li>
+      <div class="site-navigation">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                  aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="navbar-collapse" class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Главная</a></li>
 
                     <li class="nav-item dropdown">
                       <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Компания <i
@@ -134,180 +131,188 @@
 
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('news_list') }}">Новости</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Контакты</a></li>
-                </ul>
+                  </ul>
+                </div>
+              </nav>
             </div>
-          </nav>
-        </div>
-          <!--/ Col end -->
-        </div>
-        <!--/ Row end -->
-
-          <div class="nav-search">
-            <span id="search"><i class="fa fa-search"></i></span>
-          </div><!-- Search end -->
-
-          <div class="search-block" style="display: none;">
-            <label for="search-field" class="w-100 mb-0">
-              <input type="text" class="form-control" id="search-field" placeholder="Type what you want and enter">
-            </label>
-            <span class="search-close">&times;</span>
-          </div><!-- Site search end -->
+            <!--/ Col end -->
+          </div>
+          <!--/ Row end -->
         </div>
         <!--/ Container end -->
-
       </div>
       <!--/ Navigation end -->
     </header>
     <!--/ Header end -->
 
-    <section id="main-container" class="main-container">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="shuffle-btn-group">
-              <label class="active" for="all">
-                <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
-              </label>
-              <label for="roller">
-                <input type="radio" name="shuffle-filter" id="roller" value="roller">Rollers
-              </label>
-              <label for="paver">
-                <input type="radio" name="shuffle-filter" id="paver" value="paver">Pavers
-              </label>
-              <label for="excavator">
-                <input type="radio" name="shuffle-filter" id="excavator" value="excavator">Excavators
-              </label>
-              <label for="component">
-                <input type="radio" name="shuffle-filter" id="component" value="component">Components
-              </label>
-              <label for="other">
-                <input type="radio" name="shuffle-filter" id="other" value="other">Others
-              </label>
-            </div><!-- project filter end -->
+    <main>
+        <!DOCTYPE html>
+
+<body>
+
+    
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+    }
+    #gallery {
+        display: flex;
+        /* flex-direction: column; */
+        /* align-items: flex-start; Align main photo to the left */
+        width: absolute;
+        margin:1rem 0;
+    }
+    #mainPhoto {
+        max-width: 500px;
+        border: 2px solid #333;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .gallery-wrapper{
+      display: flex;
+      flex-direction: row;
+      width: absolute ;
+      justify-content: space-around;
+      gap: 2rem;
+    }
+    .thumbnails-container {
+        display: flex;
+        gap: 5px; /* Adjust the gap between thumbnails */
+    }
+    .thumbnail {
+        max-width: 100px;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+    .thumbnail:hover {
+        transform: scale(1.1);
+    }
+
+    .machine-details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%; /* Adjust as needed */
+    height: 100%;
+    background-color: #f0f0f0; /* Background color for the right corner */
+    z-index: -1; /* Place the background behind the text */
+}
+
+.machine-details {
+    max-width: 400px; /* Adjust the width as needed */
+    margin: auto; /* Center the container */
+    text-align: left; /* Align text to the left */
+    position: relative;
+    z-index: 1; /* Ensure text is above the background */
+}
+
+    h2 {
+        color: #333; /* Text color */
+        margin-top: 0; /* Remove default margin for h2 */
+    }
+
+    ul {
+        list-style-type: none; /* Remove bullets from the list */
+        padding: 0; /* Remove default padding for the list */
+    }
+
+    li {
+        margin-bottom: 8px; /* Adjust the spacing between list items */
+    }
+</style>
+
+</head>
+<body>
+  <br>
+ 
+
+  <div id="gallery">
+    <div class="gallery-wrapper">
+    <div class="photo-wrapper">
+
+    <!-- Main Photo -->
+    <img src="{{ url_for('static',filename='images/projects/project1.jpg') }}" alt="Main Car Photo" id="mainPhoto">
+    <div class="thumbnails-container">
+
+    <!-- Thumbnail Photos -->
+    <img src="{{ url_for('static',filename='images/projects/project1.jpg') }}" alt="Thumbnail 1" class="thumbnail" onclick="swapImage('{{ url_for('static',filename='images/projects/project1.jpg') }}')">
+    <img src="{{ url_for('static',filename='images/projects/project2.jpg') }}" alt="Thumbnail 2" class="thumbnail" onclick="swapImage('{{ url_for('static',filename='images/projects/project2.jpg') }}')">
+    <img src="{{ url_for('static',filename='images/projects/project3.jpg') }}" alt="Thumbnail 3" class="thumbnail" onclick="swapImage('{{ url_for('static',filename='images/projects/project3.jpg') }}')">
+    <img src="{{ url_for('static',filename='images/projects/project4.jpg') }}" alt="Thumbnail 1" class="thumbnail" onclick="swapImage('{{ url_for('static',filename='images/projects/project4.jpg') }}')">
+    <img src="{{ url_for('static',filename='images/projects/project5.jpg') }}" alt="Thumbnail 2" class="thumbnail" onclick="swapImage('{{ url_for('static',filename='images/projects/project5.jpg') }}')">
+    <img src="{{ url_for('static',filename='images/projects/project6.jpg') }}" alt="Thumbnail 3" class="thumbnail" onclick="swapImage('{{ url_for('static',filename='images/projects/project6.jpg') }}')">
+    </div>
+  </div>
 
 
-            <div class="row shuffle-wrapper" style="">
-              <div class="col-1 shuffle-sizer"></div>
 
 
-              <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;,&quot;,&quot;roller&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url_for('static',filename='images/projects/project1.jpg') }}">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project1.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url_for('prob') }}">Capital Teltway Building</a>
-                      </h3>
-                      <p class="project-cat">Rollers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 1 end -->
+    <div class="machine-details">
+    <a href="{{ url_for("contact") }}" class="btn btn-primary">Свяжитесь с нами</a>
+    <ul>
+    <li><strong>Или</strong></li>
+    <h3>Позвоните: (+998)99-333-13-13</h3>
+  </ul>
+     <h1>Название Машины</h1>
+     <p>Описание</p>
 
-              <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;paver&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project2.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project2.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="projects-single.html">Ghum Touch Hospital</a>
-                      </h3>
-                      <p class="project-cat">Pavers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 2 end -->
+    
 
-              <div class="col-lg-4 col-md-6 shuffle-item"
-                data-groups="[&quot;infrastructure&quot;,&quot;roller&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project3.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project3.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="projects-single.html">TNT East Facility</a>
-                      </h3>
-                      <p class="project-cat">Rollers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 3 end -->
+     <h2>Отчет об осмотре</h2>
+      <ul>
+        <li><strong>Произволитель:</strong></li>
+        <li><strong>Год:</strong></li>
+        <li><strong>Модель:</strong></li>
+        <li><strong>Cостояние:</strong></li>
+        <li><strong>Серийный номер:</strong></li>
+        <li><strong>Километраж:</strong></li>
+        <li><strong>Вес:</strong> </li>
+        <li><strong>Дополнительно:</strong></li>
+        <li><strong>Марка двигателя:</strong></li>
+        <li><strong>Тип двигателя:</strong></li>
+        <li><strong>Проверка гидравлического масла:</strong></li>
+        <li><strong>Проверка моторного масла:</strong></li>
+        <li><strong>Проверка дизеля:</strong></li>
+            <li><strong>Выхлоп газов:</strong></li>
+            <li><strong>Качество охлаждающей жидкости двигателя:</strong></li>
+            <li><strong>Уровень охлаждающей жидкости двигателя:</strong></li>
+            <li><strong>Масло двигателя:</strong></li>
+            <li><strong>Утечки масла двигателя:</strong></li>
+            <li><strong>Состояние движения вперед коробки передач:</strong></li>
+            <li><strong>Состояние движения вперед гидравлического насоса:</strong></li>
+            <li><strong>Сиденье в кабине:</strong></li>
+            <li><strong>Стекло кабины:</strong></li>
+            <li><strong>Общее состояние кабины:</strong></li>
+            <li><strong>Скорость гидравлических функций:</strong></li>
+            <li><strong>Шум гидравлики:</strong></li>
+            <li><strong>Утечки гидравлики:</strong></li>
+            <li><strong>Состояние износа деталей общее состояние:</strong></li>
+            <li><strong>Состояние износа деталей барабана:</strong></li>
+            <li><strong>Состояние износа деталей задних шин:</strong></li>
+            <li><strong>Состояние износа деталей сайлентблока:</strong></li>
+            <li><strong>Состояние износа деталей замечания:</strong></li>
+            <li><strong>Состояние кузова общее состояние:</strong></li>
+            <li><strong>Состояние кузова краски:</strong></li>
+      </ul>
+   </div>
+  </div> 
+</div>
 
-              <div class="col-lg-4 col-md-6 shuffle-item"
-                data-groups="[&quot;education&quot;,&quot;paver&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project4.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project4.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="projects-single.html">Narriot Headquarters</a>
-                      </h3>
-                      <p class="project-cat">Pavers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 4 end -->
+  <script>
+    function swapImage(thumbnailSrc) {
+        var mainPhoto = document.getElementById('mainPhoto');
+        mainPhoto.src = thumbnailSrc;
+    }
+</script>
 
-              <div class="col-lg-4 col-md-6 shuffle-item"
-                data-groups="[&quot;infrastructure&quot;,&quot;paver&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project5.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project5.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="projects-single.html">Kalas Metrorail</a>
-                      </h3>
-                      <p class="project-cat">Pavers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 5 end -->
 
-              <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;excavator&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project6.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project6.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="projects-single.html">Ancraft Avenue House</a>
-                      </h3>
-                      <p class="project-cat"> Excavators <p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 6 end -->
-            </div><!-- shuffle end -->
-          </div>
+</body>
 
-          <div class="col-12">
-            <div class="general-btn text-center">
-              <a class="btn btn-primary" href="projects.html">View All Projects</a>
-            </div>
-          </div>
-
-        </div><!-- Content row end -->
-
-      </div><!-- Conatiner end -->
-    </section><!-- Main container end -->
-
+      {% block content %}
+      {% endblock %}
+    </main>
 
     <footer id="footer" class="footer bg-overlay">
       <div class="footer-main">
