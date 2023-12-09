@@ -1932,6 +1932,8 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
 
 /* Project shuffle Item */
 .shuffle-item {
+  margin-top: 1.5rem;
+  margin-right: 2.5px
   padding: 0;
 }
 
@@ -2177,10 +2179,7 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
   align-content: center;
 }
 
-.clients-logo img {
-  filter: grayscale(100%);
-  filter: gray;
-}
+
 
 /* Testimonial
 ================================================== */
@@ -2593,6 +2592,7 @@ img.testimonial-thumb {
 ================================================== */
 /*-- Title border --*/
 .main-container .border-left {
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 

@@ -6,7 +6,7 @@
   <!-- Basic Page Needs
 ================================================== -->
   <meta charset="utf-8">
-  <title>Equip.uz</title>
+  <title>RC.Equip</title>
 
   <!-- Mobile Specific Metas
 ================================================== -->
@@ -18,23 +18,23 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="image/png" href="images/equipuz.gif">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename="images/equipuz.gif") }}">
 
-  <!-- CSS
+<!-- CSS
 ================================================== -->
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
-  <!-- Animation -->
-  <link rel="stylesheet" href="plugins/animate-css/animate.css">
-  <!-- slick Carousel -->
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-  <!-- Colorbox -->
-  <link rel="stylesheet" href="plugins/colorbox/colorbox.css">
-  <!-- Template styles-->
-  <link rel="stylesheet" href="css/style.css">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/bootstrap/bootstrap.min.css") }}">
+<!-- FontAwesome -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/fontawesome/css/all.min.css") }}">
+<!-- Animation -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/animate-css/animate.css") }}">
+<!-- slick Carousel -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/slick/slick.css") }}">
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/slick/slick-theme.css") }}">
+<!-- Colorbox -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/colorbox/colorbox.css") }}">
+<!-- Template styles-->
+<link rel="stylesheet" href="{{ url_for('static', filename="css/style.css") }}">
 
 </head>
 
@@ -86,7 +86,7 @@
             <div class="row align-items-center">
               <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
                 <a class="d-block" href="index.html">
-                  <img loading="lazy" src="images/logo.jpg" style="width:200px;height:200px;" alt="Equip.uz">
+                  <img src="{{ url_for('static', filename='images/equip1.jpg') }}" style="height: 150px !important; width: 200px !important;" alt="" srcset="">
                 </a>
               </div><!-- logo end -->
 
@@ -116,9 +116,6 @@
                       </div>
                     </div>
                   </li>
-                  <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="contact.html">Get A Quote</a>
-                  </li>
                 </ul><!-- Ul end -->
               </div><!-- header right end -->
             </div><!-- logo area end -->
@@ -139,35 +136,24 @@
 
                 <div id="navbar-collapse" class="collapse navbar-collapse">
                   <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">home</a></li>
 
                     <li class="nav-item dropdown">
                       <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Company <i
                           class="fa fa-angle-down"></i></a>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our People</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
-                        <li><a href="faq.html">Faq</a></li>
+                        <li><a href="{{ url_for('about') }}">About Us</a></li>
+                        <li><a href="{{ url_for('team') }}">Our People</a></li>
+                        <li><a href="{{ ('faq') }}">Faq</a></li>
                       </ul>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="projects-single.html">Used machienes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('machine_list') }}">Used Machines</a></li>
 
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <!--<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li> -->
 
-                    <li class="nav-item dropdown">
-                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Features <i
-                          class="fa fa-angle-down"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="typography.html">Typography</a></li>
-                        <li><a href="404.html">404</a></li>
-                      </ul>
-                    </li>
-
-                    <li class="nav-item"><a class="nav-link" href="news-left-sidebar.html">news</a></li>
-
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('news_list') }}">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
                   </ul>
                 </div>
               </nav>
@@ -343,7 +329,7 @@
           <div class="row justify-content-between">
             <div class="col-lg-4 col-md-6 footer-widget footer-about">
               <h3 class="widget-title">About Us</h3>
-              <img loading="lazy" src="images/equipuz.gif" style="width:250px;height:150px;" alt="Equip.uz">
+              <img loading="lazy" src="{{ url_for("static", filename="images/equipuz.gif") }}" style="width:250px;height:150px;" alt="Equip.uz">
               <p>Компания LLC «RC Equip» предлагает Вам технику и зап.части абсолютно любой отрасли (б/у в отличном
                 состоянии или новые) из Европы по гарантированно самым низким ценам и индивидуальным подходом.</p>
               <div class="footer-social">
@@ -372,16 +358,7 @@
               </div>
             </div><!-- Col end -->
 
-            <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
-              <h3 class="widget-title">Services</h3>
-              <ul class="list-arrow">
-                <li><a href="service-single.html">Pre-Construction</a></li>
-                <li><a href="service-single.html">General Contracting</a></li>
-                <li><a href="service-single.html">Construction Management</a></li>
-                <li><a href="service-single.html">Design and Build</a></li>
-                <li><a href="service-single.html">Self-Perform Construction</a></li>
-              </ul>
-            </div><!-- Col end -->
+            
           </div><!-- Row end -->
         </div><!-- Container end -->
       </div><!-- Footer main end -->
@@ -391,7 +368,7 @@
           <div class="row align-items-center">
             <div class="col-md-6">
               <div class="copyright-info">
-                <span>Equip.uz &copy;
+                <span>RC.Equip &copy;
                   <script>
                     document.write(new Date().getFullYear())
                   </script></a>
@@ -402,11 +379,16 @@
             <div class="col-md-6">
               <div class="footer-menu text-center text-md-right">
                 <ul class="list-unstyled">
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="team.html">Our people</a></li>
-                  <li><a href="faq.html">Faq</a></li>
-                  <li><a href="news-left-sidebar.html">Blog</a></li>
-                  <li><a href="contact.html">Contact</a></li>
+                  <li><a href="{{ url_for("about") }}">About</a></li>
+                  <li><a href="{{ url_for("team") }}">Our people</a></li>
+                  <li><a href="{{ url_for("faq") }}">Faq</a></li>
+                  <li><a href="{{ url_for("news_list") }}">News</a></li>
+                  <li><a href="{{ url_for("contact") }}">Contact</a></li>
+                  {%  if session %}
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
@@ -427,25 +409,25 @@
   ================================================== -->
 
     <!-- initialize jQuery Library -->
-    <script src="plugins/jQuery/jquery.min.js"></script>
+    <script src="{{ url_for("static", filename="plugins/jQuery/jquery.min.js") }}"></script>
     <!-- Bootstrap jQuery -->
-    <script src="plugins/bootstrap/bootstrap.min.js" defer></script>
+    <script src="{{ url_for("static", filename="plugins/bootstrap/bootstrap.min.js") }}" defer></script>
     <!-- Slick Carousel -->
-    <script src="plugins/slick/slick.min.js"></script>
-    <script src="plugins/slick/slick-animation.min.js"></script>
+    <script src="{{ url_for("static", filename="plugins/slick/slick.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="plugins/slick/slick-animation.min.js") }}"></script>
     <!-- Color box -->
-    <script src="plugins/colorbox/jquery.colorbox.js"></script>
+    <script src="{{ url_for("static", filename="plugins/colorbox/jquery.colorbox.js") }}"></script>
     <!-- shuffle -->
-    <script src="plugins/shuffle/shuffle.min.js" defer></script>
+    <script src="{{ url_for("static", filename="plugins/shuffle/shuffle.min.js") }}" defer></script>
 
 
     <!-- Google Map API Key-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
     <!-- Google Map Plugin-->
-    <script src="plugins/google-map/map.js" defer></script>
+    <script src="{{ url_for("static", filename="plugins/google-map/map.js") }}" defer></script>
 
     <!-- Template custom -->
-    <script src="js/script.js"></script>
+    <script src="{{ url_for("static", filename="js/script.js") }}"></script>
 
   </div><!-- Body inner end -->
 </body>

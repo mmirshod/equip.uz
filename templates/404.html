@@ -6,7 +6,7 @@
   <!-- Basic Page Needs
 ================================================== -->
   <meta charset="utf-8">
-  <title>Equip.uz</title>
+  <title>RC.Equip</title>
 
   <!-- Mobile Specific Metas
 ================================================== -->
@@ -18,163 +18,129 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="image/png" href="images/equipuz.gif">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename="images/equipuz.gif") }}">
 
-  <!-- CSS
+<!-- CSS
 ================================================== -->
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
-  <!-- Animation -->
-  <link rel="stylesheet" href="plugins/animate-css/animate.css">
-  <!-- slick Carousel -->
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-  <!-- Colorbox -->
-  <link rel="stylesheet" href="plugins/colorbox/colorbox.css">
-  <!-- Template styles-->
-  <link rel="stylesheet" href="css/style.css">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/bootstrap/bootstrap.min.css") }}">
+<!-- FontAwesome -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/fontawesome/css/all.min.css") }}">
+<!-- Animation -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/animate-css/animate.css") }}">
+<!-- slick Carousel -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/slick/slick.css") }}">
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/slick/slick-theme.css") }}">
+<!-- Colorbox -->
+<link rel="stylesheet" href="{{ url_for('static', filename="plugins/colorbox/colorbox.css") }}">
+<!-- Template styles-->
+<link rel="stylesheet" href="{{ url_for('static', filename="css/style.css") }}">
 
 </head>
 
 <body>
   <div class="body-inner">
 
-    <div id="top-bar" class="top-bar">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-8">
-            <ul class="top-info text-center text-md-left">
-              <li><i class="fas fa-map-marker-alt"></i>
-                <p class="info-text">Uzbekistan,Tashkent</p>
-              </li>
-            </ul>
-          </div>
-          <!--/ Top info end -->
-
-          <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
-            <ul class="list-unstyled">
-              <li>
-                <a title="Facebook" href="https://www.facebook.com/Equip.uz?mibextid=LQQJ4d">
-                  <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
-                </a>
-                <a title="Gmail" href="mailto: equip.kf@gmail.com?">
-                  <span class="social-icon"><i class="fab fa-google"></i></span>
-                </a>
-                <a title="Instagram" href="https://www.instagram.com/equip_uz/">
-                  <span class="social-icon"><i class="fab fa-instagram"></i></span>
-                </a>
-                <a title="telegram" href="https://t.me/equip_cz">
-                  <span class="social-icon"><i class="fab fa-telegram"></i></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <!--/ Top social end -->
-        </div>
-        <!--/ Content row end -->
-      </div>
-      <!--/ Container end -->
-    </div>
-    <!--/ Topbar end -->
     <!-- Header start -->
-    <header id="header" class="header-one">
-      <div class="bg-white">
-        <div class="container">
-          <div class="logo-area">
-            <div class="row align-items-center">
-              <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
-                <a class="d-block" href="index.html">
-                  <img loading="lazy" src="images/logo.jpg" style="width:200px;height:200px;" alt="Equip.uz">
-                </a>
-              </div><!-- logo end -->
-
-              <div class="col-lg-9 header-right">
-                <ul class="top-info-box">
-                  <li>
-                    <div class="info-box">
-                      <div class="info-box-content">
-                        <p class="info-box-title">Call Us</p>
-                        <p class="info-box-subtitle">(+998)99-333-13-13</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="info-box">
-                      <div class="info-box-content">
-                        <p class="info-box-title">Email Us</p>
-                        <p class="info-box-subtitle">equip.kf@gmail.com</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="last">
-                    <div class="info-box last">
-                      <div class="info-box-content">
-                        <p class="info-box-title">telegram</p>
-                        <p class="info-box-subtitle">+(420)773-128-700</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="contact.html">Get A Quote</a>
-                  </li>
-                </ul><!-- Ul end -->
-              </div><!-- header right end -->
-            </div><!-- logo area end -->
-
-          </div><!-- Row end -->
-        </div><!-- Container end -->
-      </div>
-
-      <div class="site-navigation">
+    <header id="header" class="header-one" style="background-repeat: no-repeat;height: fit-content; background-position: center center; background-size:cover; background-image: url('{{ url_for('static', filename='images/equip8.jpg') }}');">
+      <div id="top-bar" class="top-bar" style="background: none;">
         <div class="container">
           <div class="row">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg navbar-dark p-0">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                  aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div id="navbar-collapse" class="collapse navbar-collapse">
-                  <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">home</a></li>
-
-                    <li class="nav-item dropdown">
-                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Company <i
-                          class="fa fa-angle-down"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our People</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
-                        <li><a href="faq.html">Faq</a></li>
-                      </ul>
-                    </li>
-
-                    <li class="nav-item"><a class="nav-link" href="projects-single.html">Used machienes</a></li>
-
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-
-                    <li class="nav-item dropdown">
-                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Features <i
-                          class="fa fa-angle-down"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="typography.html">Typography</a></li>
-                        <li><a href="404.html">404</a></li>
-                      </ul>
-                    </li>
-
-                    <li class="nav-item"><a class="nav-link" href="news-left-sidebar.html">news</a></li>
-
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                  </ul>
-                </div>
-              </nav>
+            <div class="col-lg-4 col-md-8">
+              <ul class="top-info text-center text-md-left">
+                
+              </ul>
             </div>
-            <!--/ Col end -->
+            <!--/ Top info end -->
+  
+            <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
+              <ul class="list-unstyled">
+                <li>
+                  <a title="Facebook" href="https://www.facebook.com/Equip.uz?mibextid=LQQJ4d">
+                    <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+                  </a>
+                  <a title="Gmail" href="mailto:equip.kf@gmail.com?">
+                    <span class="social-icon"><i class="fab fa-google"></i></span>
+                  </a>
+                  <a title="Instagram" href="https://www.instagram.com/equip_uz/">
+                    <span class="social-icon"><i class="fab fa-instagram"></i></span>
+                  </a>
+                  <a title="telegram" href="https://t.me/equip_cz">
+                    <span class="social-icon"><i class="fab fa-telegram"></i></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!--/ Top social end -->
           </div>
-          <!--/ Row end -->
+          <!--/ Content row end -->
+        </div>
+        <!--/ Container end -->
+      </div>
+      <!--/ Topbar end -->
+      <div class="container" >
+      <div class="logo-area">
+        <div class="row align-items-center">
+          <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
+            <a class="d-block" href="{{ url_for('index') }}"></a>
+             <!-- <img src="{{ url_for('static', filename='images/equip8.jpg') }}" style="height: 150px !important; width: 300px !important;" alt="" srcset=""> -->
+          </div><!-- logo end -->
+
+          <div class="col-lg-9 header-right">
+            <ul class="top-info-box">
+              
+              <li class="last">
+                <div class="info-box last">
+                  <div class="info-box-content">
+                    <p class="info-box-title"></p>
+                    <p class="info-box-subtitle"></p>
+                  </div>
+                </div>
+              </li>
+            </ul><!-- Ul end -->
+          </div><!-- header right end -->
+        </div><!-- logo area end -->
+
+      </div><!-- Row end -->
+    </div><!-- Container end -->
+
+    <div class="site-navigation" style="background-color:#23282d;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg navbar-dark p-0">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            
+              <div id="navbar-collapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav mr-auto">
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Главная</a></li>
+
+                    <li class="nav-item dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Компания <i
+                          class="fa fa-angle-down"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url_for('about') }}">Про нас</a></li>
+                        <li><a href="{{ url_for('team') }}">Работники</a></li>
+                        <li><a href="{{ ('faq') }}">Faq</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('machine_list') }}">Машины</a></li>
+
+                    <!--<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li> -->
+
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('news_list') }}">Новости</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Контакты</a></li>
+                </ul>
+            </div>
+          </nav>
+        </div>
+          <!--/ Col end -->
+        </div>
+        <!--/ Row end -->
 
           <div class="nav-search">
             <span id="search"><i class="fa fa-search"></i></span>
@@ -193,7 +159,7 @@
       <!--/ Navigation end -->
     </header>
     <!--/ Header end -->
-    <div id="banner-area" class="banner-area" style="background-image:url(images/banner/banner1.jpg)">
+    <div id="banner-area" class="banner-area" style="background-image:url({{ url_for('static',filename="images/banner/banner3.jpg") }} )">
       <div class="banner-text">
         <div class="container">
           <div class="row">
@@ -243,8 +209,8 @@
         <div class="container">
           <div class="row justify-content-between">
             <div class="col-lg-4 col-md-6 footer-widget footer-about">
-              <h3 class="widget-title">About Us</h3>
-              <img loading="lazy" src="images/equipuz.gif" style="width:250px;height:150px;" alt="Equip.uz">
+              <h3 class="widget-title">Про нас</h3>
+              <img loading="lazy" src="{{ url_for("static", filename="images/equipuz.gif") }}" style="width:250px;height:150px;" alt="Equip.uz">
               <p>Компания LLC «RC Equip» предлагает Вам технику и зап.части абсолютно любой отрасли (б/у в отличном
                 состоянии или новые) из Европы по гарантированно самым низким ценам и индивидуальным подходом.</p>
               <div class="footer-social">
@@ -262,27 +228,16 @@
             </div><!-- Col end -->
 
             <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
-              <h3 class="widget-title">Working Hours</h3>
+              <h3 class="widget-title">Рабочие Часы</h3>
               <div class="working-hours">
-                We work 5 days a week, every day excluding major holidays. Contact us if you need some heavy machine,
-                with our
-                Hotline and Contact form.
-                <br><br> Monday - Friday: <span class="text-right">9:00 - 18:00 </span>
-                <br> Saturday: <span class="text-right">12:00 - 15:00</span>
-                <br> Sunday and holidays: <span class="text-right">closed</span>
+                Мы работаем 5 дней в неделю, каждый день за исключением крупных праздников. Свяжитесь с нами, если вам нужна какая-то тяжёлая техника, используя нашу горячую линию и контактную форму.
+                <br><br> Понедельник - Пятница: <span class="text-right">9:00 - 18:00 </span>
+                <br> Суббота: <span class="text-right">12:00 - 15:00</span>
+                <br> Воскресенье и праздники: <span class="text-right">closed</span>
               </div>
             </div><!-- Col end -->
 
-            <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
-              <h3 class="widget-title">Services</h3>
-              <ul class="list-arrow">
-                <li><a href="service-single.html">Pre-Construction</a></li>
-                <li><a href="service-single.html">General Contracting</a></li>
-                <li><a href="service-single.html">Construction Management</a></li>
-                <li><a href="service-single.html">Design and Build</a></li>
-                <li><a href="service-single.html">Self-Perform Construction</a></li>
-              </ul>
-            </div><!-- Col end -->
+            
           </div><!-- Row end -->
         </div><!-- Container end -->
       </div><!-- Footer main end -->
@@ -292,7 +247,7 @@
           <div class="row align-items-center">
             <div class="col-md-6">
               <div class="copyright-info">
-                <span>Equip.uz &copy;
+                <span>RC.Equip &copy;
                   <script>
                     document.write(new Date().getFullYear())
                   </script>
@@ -303,11 +258,16 @@
             <div class="col-md-6">
               <div class="footer-menu text-center text-md-right">
                 <ul class="list-unstyled">
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="team.html">Our people</a></li>
-                  <li><a href="faq.html">Faq</a></li>
-                  <li><a href="news-left-sidebar.html">Blog</a></li>
-                  <li><a href="contact.html">Contact</a></li>
+                  <li><a href="{{ url_for("about") }}">Про Нас</a></li>
+                  <li><a href="{{ url_for("team") }}">Работники</a></li>
+                  <li><a href="{{ url_for("faq") }}">Faq</a></li>
+                  <li><a href="{{ url_for("news_list") }}">Новости</a></li>
+                  <li><a href="{{ url_for("contact") }}">Контакты</a></li>
+                  {%  if session %}
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
@@ -328,25 +288,25 @@
   ================================================== -->
 
     <!-- initialize jQuery Library -->
-    <script src="plugins/jQuery/jquery.min.js"></script>
+    <script src="{{ url_for("static", filename="plugins/jQuery/jquery.min.js") }}"></script>
     <!-- Bootstrap jQuery -->
-    <script src="plugins/bootstrap/bootstrap.min.js" defer></script>
+    <script src="{{ url_for("static", filename="plugins/bootstrap/bootstrap.min.js") }}" defer></script>
     <!-- Slick Carousel -->
-    <script src="plugins/slick/slick.min.js"></script>
-    <script src="plugins/slick/slick-animation.min.js"></script>
+    <script src="{{ url_for("static", filename="plugins/slick/slick.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="plugins/slick/slick-animation.min.js") }}"></script>
     <!-- Color box -->
-    <script src="plugins/colorbox/jquery.colorbox.js"></script>
+    <script src="{{ url_for("static", filename="plugins/colorbox/jquery.colorbox.js") }}"></script>
     <!-- shuffle -->
-    <script src="plugins/shuffle/shuffle.min.js" defer></script>
+    <script src="{{ url_for("static", filename="plugins/shuffle/shuffle.min.js") }}" defer></script>
 
 
     <!-- Google Map API Key-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
     <!-- Google Map Plugin-->
-    <script src="plugins/google-map/map.js" defer></script>
+    <script src="{{ url_for("static", filename="plugins/google-map/map.js") }}" defer></script>
 
     <!-- Template custom -->
-    <script src="js/script.js"></script>
+    <script src="{{ url_for("static", filename="js/script.js") }}"></script>
 
   </div><!-- Body inner end -->
 </body>

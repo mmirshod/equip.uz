@@ -6,7 +6,7 @@
   <!-- Basic Page Needs
 ================================================== -->
   <meta charset="utf-8">
-  <title>Equip.uz</title>
+  <title>RC.Equip</title>
 
   <!-- Mobile Specific Metas
 ================================================== -->
@@ -337,7 +337,7 @@
         <div class="row justify-content-between">
           <div class="col-lg-4 col-md-6 footer-widget footer-about">
             <h3 class="widget-title">About Us</h3>
-            <img loading="lazy" src="images/equipuz.gif" style="width:250px;height:150px;" alt="Equip.uz">
+            <img loading="lazy" src="{{ url_for("static", filename="images/equipuz.gif") }}" style="width:250px;height:150px;" alt="Equip.uz">
             <p>Компания LLC «RC Equip» предлагает Вам технику и зап.части абсолютно любой отрасли (б/у в отличном
               состоянии или новые) из Европы по гарантированно самым низким ценам и индивидуальным подходом.</p>
             <div class="footer-social">
@@ -365,16 +365,7 @@
             </div>
           </div><!-- Col end -->
 
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
-            <h3 class="widget-title">Services</h3>
-            <ul class="list-arrow">
-              <li><a href="service-single.html">Pre-Construction</a></li>
-              <li><a href="service-single.html">General Contracting</a></li>
-              <li><a href="service-single.html">Construction Management</a></li>
-              <li><a href="service-single.html">Design and Build</a></li>
-              <li><a href="service-single.html">Self-Perform Construction</a></li>
-            </ul>
-          </div><!-- Col end -->
+          
         </div><!-- Row end -->
       </div><!-- Container end -->
     </div><!-- Footer main end -->
@@ -384,7 +375,7 @@
         <div class="row align-items-center">
           <div class="col-md-6">
             <div class="copyright-info">
-              <span>Equip.uz &copy; <script>
+              <span>RC.Equip &copy; <script>
                   document.write(new Date().getFullYear())
                 </script></a></span>
             </div>
@@ -393,11 +384,16 @@
           <div class="col-md-6">
             <div class="footer-menu text-center text-md-right">
               <ul class="list-unstyled">
-                <li><a href="about.html">About</a></li>
-                <li><a href="team.html">Our people</a></li>
-                <li><a href="faq.html">Faq</a></li>
-                <li><a href="news-left-sidebar.html">Blog</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="{{ url_for("about") }}">About</a></li>
+                  <li><a href="{{ url_for("team") }}">Our people</a></li>
+                  <li><a href="{{ url_for("faq") }}">Faq</a></li>
+                  <li><a href="{{ url_for("news_list") }}">News</a></li>
+                  <li><a href="{{ url_for("contact") }}">Contact</a></li>
+                  {%  if session %}
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  {% else %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                  {% endif %}
               </ul>
             </div>
           </div>
@@ -414,29 +410,29 @@
   </footer><!-- Footer end -->
 
 
-  <!-- Javascript Files
+    <!-- Javascript Files
   ================================================== -->
 
-  <!-- initialize jQuery Library -->
-  <script src="plugins/jQuery/jquery.min.js"></script>
-  <!-- Bootstrap jQuery -->
-  <script src="plugins/bootstrap/bootstrap.min.js" defer></script>
-  <!-- Slick Carousel -->
-  <script src="plugins/slick/slick.min.js"></script>
-  <script src="plugins/slick/slick-animation.min.js"></script>
-  <!-- Color box -->
-  <script src="plugins/colorbox/jquery.colorbox.js"></script>
-  <!-- shuffle -->
-  <script src="plugins/shuffle/shuffle.min.js" defer></script>
+    <!-- initialize jQuery Library -->
+    <script src="{{ url_for("static", filename="plugins/jQuery/jquery.min.js") }}"></script>
+    <!-- Bootstrap jQuery -->
+    <script src="{{ url_for("static", filename="plugins/bootstrap/bootstrap.min.js") }}" defer></script>
+    <!-- Slick Carousel -->
+    <script src="{{ url_for("static", filename="plugins/slick/slick.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="plugins/slick/slick-animation.min.js") }}"></script>
+    <!-- Color box -->
+    <script src="{{ url_for("static", filename="plugins/colorbox/jquery.colorbox.js") }}"></script>
+    <!-- shuffle -->
+    <script src="{{ url_for("static", filename="plugins/shuffle/shuffle.min.js") }}" defer></script>
 
 
-  <!-- Google Map API Key-->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
-  <!-- Google Map Plugin-->
-  <script src="plugins/google-map/map.js" defer></script>
+    <!-- Google Map API Key-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+    <!-- Google Map Plugin-->
+    <script src="{{ url_for("static", filename="plugins/google-map/map.js") }}" defer></script>
 
-  <!-- Template custom -->
-  <script src="js/script.js"></script>
+    <!-- Template custom -->
+    <script src="{{ url_for("static", filename="js/script.js") }}"></script>
 
   </div><!-- Body inner end -->
   </body>

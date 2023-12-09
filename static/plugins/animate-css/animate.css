@@ -2454,6 +2454,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     transform: translateX(2000px);
   }
 
+
   100% {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
@@ -2465,6 +2466,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
 }
+@keyframes slideToCenter {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slideToCenter {
+  animation: slideToCenter 1s ease forwards;
+}
+
 
 @-webkit-keyframes slideOutLeft {
   0% {

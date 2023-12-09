@@ -75,7 +75,7 @@ def logout():
     )
 
 
-@app.route("/add_news", methods=['GET', 'POST'])
+@app.route("/news/add", methods=['GET', 'POST'])
 def news_add():
     if request.method == 'POST' or request.method == 'post':
         pic = request.files.get('post_pic')
