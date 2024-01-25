@@ -121,6 +121,7 @@ class Machine(db.Model):
     __tablename__ = 'machines'
 
     id = db.Column(db.Integer(), primary_key=True)
+    type_id = db.Column(db.Integer(), db.ForeignKey('machine_types.id'))
 
     name = db.Column(db.Integer(), nullable=False)
     short_desc = db.Column(db.Text(), nullable=False)
@@ -136,7 +137,6 @@ class Machine(db.Model):
     weight = db.Column(db.Integer(), nullable=False)
     leveling_system = db.Column(db.String(), nullable=False)
     drum = db.Column(db.String(), nullable=False)
-    type_id = db.Column(db.Integer(), db.ForeignKey('machine_types.id'))
 
     engine_type = db.Column(db.String(), nullable=False)
     engine_blow_by = db.Column(db.Integer(), nullable=False)  # out of 5
