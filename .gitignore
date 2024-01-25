@@ -3,3 +3,5 @@
 test.db
 identifier.sqlite
 .env
+myenv/
+venv/
