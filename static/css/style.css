@@ -81,12 +81,16 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .left-bordered-div {
   height: 110px;
-  border-left: 3px solid rgb(154, 95, 22); /* 2px width solid black left border */
-  padding: 10px; /* Optional: Add some padding to the content inside the border */
+  border-left: 3px solid rgb(154, 95, 22);
+  /* 2px width solid black left border */
+  padding: 10px;
+  /* Optional: Add some padding to the content inside the border */
   margin-left: 10px;
 }
+
 .body-inner {
   position: relative;
   overflow: hidden;
@@ -663,13 +667,45 @@ ul.top-info li p.info-text {
 /* Header area
 ================================================== */
 .header {
-  background: #fff ;
+  background: #fff;
   position: relative;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
-  
 }
 
-.header-one,
+.header-one{
+  background: none;
+  image-orientation: relative;
+  background-repeat: no-repeat;
+  height: fit-content;
+   background-position: center center; 
+   background-size:cover; 
+   background-image: url('equip8.png');
+}
+@media (max-width: 991px) {
+  .header-one {
+    overflow-y: auto;
+    background: none;
+  image-orientation: relative;
+  background-repeat: no-repeat;
+  height: fit-content;
+   background-position: center center; 
+   background-size:cover; 
+   background-size:cover; background-image: url('equip8.png');
+  }
+}
+@media (max-width: 575px) {
+  .header-one {
+    color: #d47c24;
+    background: none;
+  image-orientation: relative;
+  background-repeat: no-repeat;
+  height: 100px;
+   background-position: center left; 
+   background-size: 50%; 
+   background-image: url('equip888.png');
+    overflow-y: auto;
+  }
+}
 .header-one .site-navigation {
   background: #23282d;
 }
@@ -788,13 +824,13 @@ ul.top-info-box li {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 475px) {
   ul.top-info-box li {
     border: 0;
-    text-align: center;
+    text-align: bottom center;
     margin: 0;
     flex: 0 0 100%;
-    margin-top: 15px;
+    margin-top: -25px;
   }
 }
 
@@ -1277,7 +1313,38 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
   padding: 0 15px;
   margin: 0 0 10px;
 }
-
+.slide-title-main {
+  font-size: 13px;
+  line-height: 39px;
+  padding: 0 15px;
+  margin: 0 0 10px;
+  background: #d47c24;
+  color: #fff;
+}
+@media (max-width: 991px) {
+  .slide-title-main {
+    font-size: 19px;
+  }
+}
+@media (max-width: 450px) {
+  .slide-title-main {
+    font-size: 13px;
+    size:inherit;
+  }
+}
+.container-A-2005{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 0 auto;
+}
+@media(max-width: 767px){
+  .container-A-2005{
+    flex-direction: column;
+  }
+}
 .slide-title {
   font-size: 30px;
   line-height: 36px;
@@ -1462,6 +1529,7 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
   position: absolute;
   width: 100%;
   transform: translateY(-50%);
+  
 }
 
 @media (max-width: 767px) {
@@ -1473,7 +1541,6 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
     width: calc(100% - 40px);
   }
 }
-
 .box-slider-text {
   background: #111;
   background: rgba(0, 0, 0, 0.65);
@@ -1576,8 +1643,7 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
 
 .into-sub-title {
   font-weight: 900;
-  text-transform: uppercase;
-  font-size: 32px;
+  font-size: 25px;
   line-height: normal;
   margin: 10px 0;
 }
@@ -1938,8 +2004,7 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
 /* Project shuffle Item */
 .shuffle-item {
   margin-top: 1.5rem;
-  margin-right: 2.5px
-  padding: 0;
+  margin-right: 2.5px padding: 0;
 }
 
 .shuffle-item .project-img-container {
@@ -1948,7 +2013,7 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
 }
 
 .shuffle-item .project-img-container img {
-  transform: perspective(1px) scale3d(1.1, 1.1, 1);
+  transform: perspective(1px) scale3d(1, 1, 1);
   transition: all 400ms;
 }
 
@@ -3487,3 +3552,14 @@ label {
 }
 
 /*# sourceMappingURL=style.css.map */
+.image-link img {
+  /* Set initial size */
+  height: 100px;
+  width: 100px;
+  transition: transform 0.3s ease-in-out; /* Add smooth transition effect */
+}
+
+.image-link:hover img {
+  /* Increase size on hover */
+  transform: scale(1.2);
+}

@@ -111,10 +111,9 @@ class MachineTypes(db.Model):
     __tablename__ = 'machine_types'
 
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.Integer(), nullable=False)
+    name = db.Column(db.String(), nullable=False)
     last_added = db.Column(db.DateTime(), nullable=False)
 
-    last_added_by = db.Column(db.DateTime(), nullable=False)
     machines = db.relationship('Machine', backref='type', lazy=True)
 
 

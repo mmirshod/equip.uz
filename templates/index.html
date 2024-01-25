@@ -6,7 +6,7 @@
   <!-- Basic Page Needs
 ================================================== -->
   <meta charset="utf-8">
-  <title>RC.Equip</title>
+  <title>RCEquip</title>
 
   <!-- Mobile Specific Metas
 ================================================== -->
@@ -18,7 +18,7 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename="images/equipuz.gif") }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename="images/equipuzz.png") }}">
 
   <!-- CSS
 ================================================== -->
@@ -43,7 +43,8 @@
 
 
     <!-- Header start -->
-      <header id="header" class="header-one" style="background-repeat: no-repeat;height: fit-content; background-position: center center; background-size:cover; background-image: url('{{ url_for('static', filename='images/equip8.jpg') }}');">
+      <header id="header" class="header-one" >
+        <!--style="image-orientation: relative;background-repeat: no-repeat;height: fit-content; background-position: center center; background-size:cover; background-image: url('{{ url_for('static', filename='images/equip8.jpg') }}');-->
         <div id="top-bar" class="top-bar" style="background: none;">
           <div class="container">
             <div class="row">
@@ -54,24 +55,7 @@
               </div>
               <!--/ Top info end -->
     
-              <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
-                <ul class="list-unstyled">
-                  <li>
-                    <a title="Facebook" href="https://www.facebook.com/Equip.uz?mibextid=LQQJ4d">
-                      <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
-                    </a>
-                    <a title="Gmail" href="mailto:equip.kf@gmail.com?">
-                      <span class="social-icon"><i class="fab fa-google"></i></span>
-                    </a>
-                    <a title="Instagram" href="https://www.instagram.com/equip_uz/">
-                      <span class="social-icon"><i class="fab fa-instagram"></i></span>
-                    </a>
-                    <a title="telegram" href="https://t.me/equip_cz">
-                      <span class="social-icon"><i class="fab fa-telegram"></i></span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              
               <!--/ Top social end -->
             </div>
             <!--/ Content row end -->
@@ -89,7 +73,24 @@
 
             <div class="col-lg-9 header-right">
               <ul class="top-info-box">
-                
+                <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
+                  <ul class="list-unstyled">
+                    <li>
+                      <a title="Facebook" href="https://www.facebook.com/Equip.uz?mibextid=LQQJ4d">
+                        <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+                      </a>
+                      <a title="Gmail" href="mailto:info@rcequip.uz">
+                        <span class="social-icon"><i class="fab fa-google"></i></span>
+                      </a>
+                      <a title="Instagram" href="https://www.instagram.com/equip_uz/">
+                        <span class="social-icon"><i class="fab fa-instagram"></i></span>
+                      </a>
+                      <a title="telegram" href="https://t.me/equip_cz">
+                        <span class="social-icon"><i class="fab fa-telegram"></i></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
                 <li class="last">
                   <div class="info-box last">
                     <div class="info-box-content">
@@ -104,6 +105,8 @@
 
         </div><!-- Row end -->
       </div><!-- Container end -->
+    </header>
+    <!--/ Header end -->
 
       <div class="site-navigation" style="background-color:#23282d;">
         <div class="container">
@@ -135,6 +138,10 @@
 
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('news_list') }}">Новости</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Контакты</a></li>
+                    <ul class="navbar-nav ml-auto">
+                      <li class="nav-item dropdown">
+                          <a href="tel:+998993331313" class="nav-link">(+998)99-333-13-13</a>
+                      </li>
                   </ul>
               </div>
             </nav>
@@ -158,8 +165,7 @@
 
       </div>
       <!--/ Navigation end -->
-    </header>
-    <!--/ Header end -->
+    
 
     <div class="banner-carousel banner-carousel-1 mb-0">
       <div class="banner-carousel-item" style="background-image:url({{ url_for('static', filename="images/main2.jpg") }})">
@@ -169,12 +175,14 @@
               <div class="col-md-12 text-center">
                 
                 <p data-animation-in="slideToCenter" data-duration-in="1.2">
-                   <div style="display: flex !important; flex-direction: row !important; justify-content: center !important; align-items: center !important;">
+                  <div style="display: flex !important; flex-direction: row !important; justify-content: center !important; align-items: center !important;">
                     
-                    <img src="{{ url_for('static', filename='images/equipuz.gif') }}"style="height: 150px !important; width: 300px !important;" alt="" srcset="">
-                    <div class="left-bordered-div"></div>
-                    <h3 class="slide-title-box" data-animation-in="slideInLeft" style="right: 158px;top:30px;position: absolute;">RC.Equip-10 лет в доставке машин</h3>
-                    <a href="{{ url_for("contact") }}" class="slider btn btn-primary border">Свяжитесь с нами</a>
+                    <img src="{{ url_for('static', filename='images/equip52.png') }}"style="height: 150px !important; width: 300px !important;" alt="" srcset=""data-animation-in="slideInLeft">
+                    <div class="left-bordered-div"data-animation-in="slideInDown"></div>
+                    <div>
+                    <h3 class="slide-title-main" data-animation-in="fadeIn">RC.Equip-10 лет в доставке машин</h3>
+                    <a href="{{ url_for("contact") }}" class="slider btn btn-primary border"data-animation-in="slideInRight">Свяжитесь с нами</a>
+                    </div>
                     <!-- <p><a href="{{ url_for("machine_list")}}" class="slider btn btn-primary border"><img <img src="{{ url_for('static', filename='images/equip3.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>
                     <p><a href="{{ url_for("machine_list")}}" class="slider btn btn-primary border"><img <img src="{{ url_for('static', filename='images/equip4.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>
                     <p><a href="{{ url_for("machine_list")}}" class="slider btn btn-primary border"><img <img src="{{ url_for('static', filename='images/equip5.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>                     -->
@@ -212,7 +220,7 @@
               <div class="col-md-12">
                 <h2 class="slide-title" data-animation-in="slideInDown">Мы можем доставить любую машину</h2>
                 <h3 class="slide-sub-title" data-animation-in="fadeIn">Мы верим в устойчивость</h3>
-                <p class="slider-description lead" data-animation-in="slideInRight">Мы займемся вашим неудачами, именно они определяют, как вы достигнете успеха.</p>
+                <p class="slider-description lead" data-animation-in="slideInRight">Мы займемся вашим неудачами, именно они определяют, как вы достигнете успеха</p>
                 <div data-animation-in="slideInLeft">
                   <a href="{{ url_for("contact") }}" class="slider btn btn-primary" aria-label="contact-with-us">Получите бесплатный запрос</a>
                   <a href="{{ url_for("about") }}" class="slider btn btn-primary border" aria-label="learn-more-about-us">Узнать больше</a>
@@ -231,25 +239,27 @@
             <div class="row align-items-center h-100">
               <div class="col-md-12 text-center">
                 <p data-animation-in="slideToCenter" data-duration-in="1.2">
-                  <div style="display: flex !important; flex-direction: row !important; justify-content: center !important; align-items: center !important;">
-                    <p><a href="{{ url_for("machine_list")}}" class="slider btn btn-primary border"><img <img src="{{ url_for('static', filename='images/equip3.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>
-                    <p><a href="{{ url_for("machine_list")}}" class="slider btn btn-primary border"><img <img src="{{ url_for('static', filename='images/equip4.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>
-                    <p><a href="{{ url_for("machine_list")}}" class="slider btn btn-primary border"><img <img src="{{ url_for('static', filename='images/equip5.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>                    
+                  <h6 class="into-sub-title">Машины</h6>
+                  <br>
+                  <!--<div style="display: flex !important; flex-direction: row !important; justify-content: center !important; align-items: center !important;gap: 50px !important;margin: 0 auto !important;">-->
+                    <div class="container-A-2005">
+                    <p><a href="{{ url_for("machine_list")}}"  class="image-link"><img src="{{ url_for('static', filename='images/equip3.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>
+                    <p><a href="{{ url_for("machine_list")}}" class="image-link"><img src="{{ url_for('static', filename='images/equip4.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>
+                    <p><a href="{{ url_for("machine_list")}}" class="image-link"><img src="{{ url_for('static', filename='images/equip5.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>   
+                    <p><a href="{{ url_for("machine_list")}}" class="image-link"><img src="{{ url_for('static', filename='images/equip2.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>                 
                   </div>
+                </div>
                   <!--<p><a href="{{ url_for("machine_list")}}" class="slider btn btn-primary border"><img <img src="{{ url_for('static', filename='images/equip2.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>-->
                 </p>
               </div>
             </div>
           </div>
-          <br>
-          <br>
-          <br>
           <div class="col-lg-6">
             <div class="ts-intro">
               <h2 class="into-title">Про нас</h2>
-              <h3 class="into-sub-title">Компания LLC «RC Equip» предлагает Вам технику и зап.части абсолютно любой
+              <h5 class="into-sub-title">Компания LLC «RC Equip» предлагает Вам технику и запчасти абсолютно любой
                 отрасли (б/у в отличном состоянии или новые) из Европы по гарантированно самым низким ценам и
-                индивидуальным подходом.</h3>
+                индивидуальным подходом</h5>
             </div><!-- Intro box end -->
 
             <div class="gap-20"></div>
@@ -623,7 +633,7 @@
 
         <!-- @TODO: Create endpoint for `/news` -->
         <div class="general-btn text-center mt-4">
-          <a class="btn btn-primary" href="{{ url_for("news_list") }}">Посмотреть все посты</a>
+          <a class="btn btn-primary" href="{{ url_for("news_list") }}">Посмотреть все новости</a>
         </div>
 
       </div>
@@ -645,7 +655,7 @@
                 <ul>
                   <li><a href="https://www.facebook.com/Equip.uz?mibextid=LQQJ4d" aria-label="Facebook"><i
                         class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="mailto: equip.kf@gmail.com?" aria-label="Gmail"><i class="fab fa-google"></i></a>
+                  <li><a href="mailto: info@rcequip.uz" aria-label="Gmail"><i class="fab fa-google"></i></a>
                   </li>
                   <li><a href="https://www.instagram.com/equip_uz/" aria-label="Instagram"><i
                         class="fab fa-instagram"></i></a></li>

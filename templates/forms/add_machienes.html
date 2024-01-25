@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %} Add Machienes {% endblock %}
+
+
+{% block content %}
+    <h1>Add Machienes Post</h1>
+    <form action="{{ url_for('news_add') }}" method="POST" enctype="multipart/form-data">
+        <label for="manufacturer">Производитель</label>
+        <input type="text" id="manufacturer" name="post_manufacturer" required>
+        <br><br>
+        <label for="model">Модель</label>
+        <input type="text" id="model" name="post_model" required>
+        <br><br>
+        <label for="year">Год</label>
+        <input type="number" id="year" name="post_year" required>
+        <br><br>
+        <label for="condition">Состояние</label>
+        <input type="text" id="condition" name="post_condition" required>
+        <br><br>
+        <label for="hours">Моточас</label>
+        <input type="number" id="hours" name="post_hours" required>
+        <br><br>
+        <label for="weight">Вес</label>
+        <input type="number" id="weight" name="post_weight" required>
+        <br><br>
+        <label for="engine">Марка двигателя</label>
+        <input type="text" id="engine" name="post_engine" required>
+        <br><br>
+        <label for="fuel">Тип топлива</label>
+        <input type="text" id="fuel" name="post_fuel" required>
+        <br><br>
+        <label for="description">Описание</label>
+        <textarea name="post_description" id="description" rows="9" required></textarea>
+        <br><br>
+        <label for="pic"></label>
+        <input type="file" name="post_pic" id="pic">
+        <br><br>
+        <label for="tags">Tags:</label>
+        <input type="text" id="tags" name="post_tags"> <button type="button" id="add-tag">+</button>
+        <p id="ready-tags"></p>
+        <br><br>
+        <button type="submit">Submit!</button>
+    </form>
+
+    <script>
+        const form = document.getElementsByTagName('form')[0];
+        const tagsInput = document.getElementById('tags');
+        const readyTags = document.getElementById('ready-tags');
+        const addTagBtn = document.getElementById('add-tag');
+
+        let addedTags = [];
+
+        addTagBtn.onclick = e => {
+            e.preventDefault();
+
+            const tag = tagsInput.value.trim();
+            if (tag) {
+                addedTags.push(tag);
+                readyTags.textContent = addedTags.join(', ');
+            }
+            tagsInput.value = "";
+            console.log(addedTags);
+        }
+        form.onsubmit = (e) => tagsInput.value = addedTags.join(',');
+    </script>
+{% endblock %}

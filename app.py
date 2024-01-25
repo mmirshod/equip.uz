@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 setup_db(app)
-db_drop_and_create_all(app)
+# db_drop_and_create_all(app)
 
 ckeditor = CKEditor(app)
 
@@ -169,14 +169,13 @@ def news_by_tag(tag_id: int):
     return render_template('news-right-sidebar.html', posts=[_[0] for _ in posts])
 
 
-@app.route('/machines')
+@app.route('/machines/')
 def machine_list():
-    machine_type = request.args.get('type', None)
-    if machine_type:
-        stmt = db.select(Machine).where(Machine.type.name == machine_type)
-        machines = db.session.execute(stmt).scalars().all()
+    # if machine_type != "all":
+    #     stmt = db.select(Machine).where(Machine.type.name == machine_type)
+    #     machines = db.session.execute(stmt).scalars().all()
 
-        return render_template('projects.html', machines=machines)
+    #     return render_template('projects.html', machines=machines)
 
     return render_template('projects.html', machines=db.session.execute(db.select(Machine)).scalars())
 
