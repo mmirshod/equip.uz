@@ -2004,8 +2004,7 @@ ul.navbar-nav>li.header-get-a-quote:hover>a:after {
 /* Project shuffle Item */
 .shuffle-item {
   margin-top: 1.5rem;
-  margin-right: 2.5px;
-   padding: 0;
+  margin-right: 2.5px padding: 0;
 }
 
 .shuffle-item .project-img-container {

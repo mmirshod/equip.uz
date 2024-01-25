@@ -5,3 +5,4 @@ identifier.sqlite
 .env
 myenv/
 venv/
+__pycache__/
