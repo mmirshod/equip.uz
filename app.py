@@ -9,14 +9,14 @@ from flask import Flask, redirect, render_template, session, url_for, request
 from flask_ckeditor import CKEditor
 from werkzeug.utils import secure_filename
 
-from models import setup_db, db_drop_and_create_all, db, Post, Tag, Machine
+from models import setup_db, db_drop_and_create_all, db, Post, Tag, Machine, ImagePath
 from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
 setup_db(app)
-# db_drop_and_create_all(app)
+db_drop_and_create_all(app)
 
 ckeditor = CKEditor(app)
 
@@ -158,6 +158,7 @@ def news_list() -> str:
              db.session.execute(db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()]
     return render_template("news-right-sidebar.html", news=posts)
 
+
 @app.route("/prob")
 def prob():
     return render_template("machienes/rollers/1.html")
@@ -168,6 +169,7 @@ def prob1():
 def prob2():
     return render_template("machienes/pavers/2.html")
 
+
 @app.route('/news/tag=<int:tag_id>')
 def news_by_tag(tag_id: int):
     posts = db.session.execute(db.select(Post).filter(Post.tags.any(id=tag_id))).fetchall()
@@ -175,16 +177,16 @@ def news_by_tag(tag_id: int):
     return render_template('news-right-sidebar.html', posts=[_[0] for _ in posts])
 
 
-@app.route('/machines/')
+@app.route('/machines', methods=['GET'])
 def machine_list():
-    # if machine_type != "all":
-    #     stmt = db.select(Machine).where(Machine.type.name == machine_type)
-    #     machines = db.session.execute(stmt).scalars().all()
+    machine_type = request.args.get('type', None)
+    if machine_type:
+        stmt = db.select(Machine).where(Machine.type.name == machine_type)
+        machines = db.session.execute(stmt).scalars().all()
 
-    #     return render_template('projects.html', machines=machines)
+        return render_template('projects.html', machines=machines)
 
     return render_template('projects.html', machines=db.session.execute(db.select(Machine)).scalars())
-
 
 
 @app.route("/machines/<int:machine_id>")
@@ -192,9 +194,60 @@ def machine_detail(machine_id: int):
     return render_template('projects-single.html', machine=db.get_or_404(Machine, machine_id))
 
 
-@app.route("/machines/add")
+@app.route('/machines/add', methods=['GET', 'POST'])
 def machine_add():
-    ...
+    if request.method == 'POST':
+        if 'images' not in request.files:
+            raise Exception('No file part')
+
+        images = request.files.getlist('images')
+        condition = request.form.get('condition')
+        engine = request.form.get('engine')
+        oil_type = request.form.get('fuel')
+        name = request.form.get('name')
+        model = request.form.get('model')
+        desc = request.form.get('description')
+        price = float(request.form.get('cost'))
+        mfg_year = int(request.form.get('mfg_year'))
+        manufacturer = request.form.get('manufacturer')
+        hours = int(request.form.get('hours'))
+        weight = float(request.form.get('weight'))
+        machine_type = request.form.get('type')
+        image_objects = []
+
+        c = 0
+        for img in images:
+            file_path = f'machines/{model}___{img.filename}___{str(c)}'
+            img.save(os.path.join(app.config['UPLOAD_FOLDER'], file_path))
+            img_obj = ImagePath(
+                path=file_path,
+            )
+            db.session.add(img_obj)
+            image_objects.append(img_obj)
+            c += 1
+
+        machine = Machine(
+            name=name,
+            desc=desc,
+            price=price,
+            mfg_year=mfg_year,
+            manufacturer=manufacturer,
+            hours=hours,
+            weight=weight,
+            images=image_objects,
+            machine_type=machine_type,
+            model=model,
+            oil_type=oil_type,
+            engine_type=engine,
+            condition=condition,
+        )
+
+        db.session.add(machine)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    return render_template('forms/add_machienes.html')
 
 
 @app.route("/machines/delete/<int:machine_id>")
