@@ -10,7 +10,3 @@ class NewsForm(FlaskForm):
     content = CKEditorField(label="Content")
     img = FileField(label="Picture", validators=[FileRequired()])
     submit = SubmitField(label="Submit")
-
-
-# class MachineForm(FlaskForm):
-#     name

@@ -107,50 +107,34 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer(), db.ForeignKey('posts.id'))
 
 
-class MachineTypes(db.Model):
-    __tablename__ = 'machine_types'
-
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(), nullable=False)
-    last_added = db.Column(db.DateTime(), nullable=False)
-
-    machines = db.relationship('Machine', backref='type', lazy=True)
-
-
 class Machine(db.Model):
     __tablename__ = 'machines'
 
     id = db.Column(db.Integer(), primary_key=True)
-    type_id = db.Column(db.Integer(), db.ForeignKey('machine_types.id'))
+    machine_type = db.Column(db.String())
 
     name = db.Column(db.Integer(), nullable=False)
-    short_desc = db.Column(db.Text(), nullable=False)
-    full_desc = db.Column(db.Text(), nullable=False)
+    desc = db.Column(db.Text(), nullable=False)
     price = db.Column(db.Float(), nullable=False)
 
     # Inspection Report
+    model = db.Column(db.String(), nullable=False)
     mfg_year = db.Column(db.Integer(), nullable=False)
     manufacturer = db.Column(db.String(), nullable=False)
-    model = db.Column(db.String(), nullable=False)
-    serial_number = db.Column(db.String(), nullable=False)
     hours = db.Column(db.Integer(), nullable=False)
     weight = db.Column(db.Integer(), nullable=False)
-    leveling_system = db.Column(db.String(), nullable=False)
-    drum = db.Column(db.String(), nullable=False)
-
     engine_type = db.Column(db.String(), nullable=False)
-    engine_blow_by = db.Column(db.Integer(), nullable=False)  # out of 5
-    engine_oil = db.Column(db.Integer(), nullable=False)  # out of 5
-    engine_leakages = db.Column(db.Boolean, nullable=False)
-    general_engine_oil_checked = db.Column(db.Boolean, nullable=False)
-    general_engine_oil_quality = db.Column(db.Boolean, nullable=False)
-
-    hydraulic_noise = db.Column(db.String(), nullable=False)
-    hydraulic_leakages = db.Column(db.Boolean, nullable=False)
-
-    amount = db.Column(db.Integer(), nullable=False)
-    available_amount = db.Column(db.Integer(), default=text('amount'))
+    oil_type = db.Column(db.String(), nullable=False)
+    condition = db.Column(db.String(), nullable=False)
 
     date_added = db.Column(db.DateTime, default=datetime.now())
-    date_updated = db.Column(db.DateTime)
-    pics = db.Column(db.String(), nullable=False)
+    date_updated = db.Column(db.DateTime, default=datetime.now())
+    images = db.relationship('ImagePath', backref='machine', lazy=True)
+
+
+class ImagePath(db.Model):
+    __tablename__ = 'image_paths'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    path = db.Column(db.String(), nullable=False)
+    machine_id = db.Column(db.Integer(), db.ForeignKey('machines.id'), nullable=False)

@@ -4,21 +4,30 @@
 
 {% block content %}
     <h1>Add Machienes Post</h1>
-    <form action="{{ url_for('news_add') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url_for('machine_add') }}" method="POST" enctype="multipart/form-data">
         <label for="name">Название</label>
         <input type="text" id="name" name="name" required>
         <br><br>
+        <label for="type">Тип Машины</label>
+        <select name="type" id="machine_type" required>
+            <option value="rollers">Rollers</option>
+            <option value="pavers">Pavers</option>
+            <option value="excavators">Excavators</option>
+            <option value="components">Components</option>
+            <option value="others">Others</option>
+        </select>
+        <br/><br/>
         <label for="cost">Стоимость</label>
-    <input type="number" id="cost" name="cost" required>
-    <br><br>
+        <input type="number" id="cost" name="cost" required>
+        <br><br>
         <label for="manufacturer">Производитель</label>
         <input type="text" id="manufacturer" name="manufacturer" required>
         <br><br>
         <label for="model">Модель</label>
         <input type="text" id="model" name="model" required>
         <br><br>
-        <label for="year">Год</label>
-        <input type="number" id="year" name="year" required>
+        <label for="mfg_year">Год</label>
+        <input type="number" id="year" name="mfg_year" required>
         <br><br>
         <label for="condition">Состояние</label>
         <input type="text" id="condition" name="condition" required>
@@ -36,15 +45,10 @@
         <input type="text" id="fuel" name="fuel" required>
         <br><br>
         <label for="description">Описание</label>
-        <textarea name="description" id="description" rows="9" required></textarea>
+        <textarea name="description" id="description" rows="10" required></textarea>
         <br><br>
-        <label for="files">Select files:</label>
-  <input type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
-  <output></output>
-<br><br>
-        <label for="tags">Tags:</label>
-        <input type="text" id="tags" name="tags"> <button type="button" id="add-tag">+</button>
-        <p id="ready-tags"></p>
+        <label for="images">Select files:</label>
+        <input type="file" name="images" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
         <br><br>
         <button type="submit">Submit!</button>
     </form>
@@ -69,8 +73,5 @@
             console.log(addedTags);
         }
         form.onsubmit = (e) => tagsInput.value = addedTags.join(',');
-        const output = document.querySelector("output")
-const input = document.querySelector("input")
-let imagesArray = []
     </script>
 {% endblock %}
