@@ -5,38 +5,45 @@
 {% block content %}
     <h1>Add Machienes Post</h1>
     <form action="{{ url_for('news_add') }}" method="POST" enctype="multipart/form-data">
+        <label for="name">Название</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="cost">Стоимость</label>
+    <input type="number" id="cost" name="cost" required>
+    <br><br>
         <label for="manufacturer">Производитель</label>
-        <input type="text" id="manufacturer" name="post_manufacturer" required>
+        <input type="text" id="manufacturer" name="manufacturer" required>
         <br><br>
         <label for="model">Модель</label>
-        <input type="text" id="model" name="post_model" required>
+        <input type="text" id="model" name="model" required>
         <br><br>
         <label for="year">Год</label>
-        <input type="number" id="year" name="post_year" required>
+        <input type="number" id="year" name="year" required>
         <br><br>
         <label for="condition">Состояние</label>
-        <input type="text" id="condition" name="post_condition" required>
+        <input type="text" id="condition" name="condition" required>
         <br><br>
         <label for="hours">Моточас</label>
-        <input type="number" id="hours" name="post_hours" required>
+        <input type="number" id="hours" name="hours" required>
         <br><br>
         <label for="weight">Вес</label>
-        <input type="number" id="weight" name="post_weight" required>
+        <input type="number" id="weight" name="weight" required>
         <br><br>
         <label for="engine">Марка двигателя</label>
-        <input type="text" id="engine" name="post_engine" required>
+        <input type="text" id="engine" name="engine" required>
         <br><br>
         <label for="fuel">Тип топлива</label>
-        <input type="text" id="fuel" name="post_fuel" required>
+        <input type="text" id="fuel" name="fuel" required>
         <br><br>
         <label for="description">Описание</label>
-        <textarea name="post_description" id="description" rows="9" required></textarea>
+        <textarea name="description" id="description" rows="9" required></textarea>
         <br><br>
-        <label for="pic"></label>
-        <input type="file" name="post_pic" id="pic">
-        <br><br>
+        <label for="pic">Select Photos:</label>
+<input type="file" name="pics[]" id="pic" multiple>
+<button id="downloadBtn">Download Selected Photos</button>
+<br><br>
         <label for="tags">Tags:</label>
-        <input type="text" id="tags" name="post_tags"> <button type="button" id="add-tag">+</button>
+        <input type="text" id="tags" name="tags"> <button type="button" id="add-tag">+</button>
         <p id="ready-tags"></p>
         <br><br>
         <button type="submit">Submit!</button>
@@ -62,5 +69,37 @@
             console.log(addedTags);
         }
         form.onsubmit = (e) => tagsInput.value = addedTags.join(',');
+
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+    // Get the file input element
+    var input = document.getElementById('pic');
+
+    // Get the selected files
+    var files = input.files;
+
+    // Check if any files are selected
+    if (files.length > 0) {
+        // Create a zip file to store the selected photos
+        var zip = new JSZip();
+
+        // Iterate through selected files and add them to the zip file
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            zip.file(file.name, file);
+        }
+
+        // Generate the zip file
+        zip.generateAsync({ type: 'blob' })
+            .then(function (blob) {
+                // Create a download link for the zip file
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'selected_photos.zip';
+                link.click();
+            });
+    } else {
+        alert('Please select at least one photo.');
+    }
+});
     </script>
 {% endblock %}

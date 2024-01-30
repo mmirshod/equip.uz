@@ -161,6 +161,12 @@ def news_list() -> str:
 @app.route("/prob")
 def prob():
     return render_template("machienes/rollers/1.html")
+@app.route("/prob1")
+def prob1():
+    return render_template("machienes/pavers/1.html")
+@app.route("/prob2")
+def prob2():
+    return render_template("machienes/pavers/2.html")
 
 @app.route('/news/tag=<int:tag_id>')
 def news_by_tag(tag_id: int):
