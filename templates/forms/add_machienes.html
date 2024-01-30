@@ -38,9 +38,9 @@
         <label for="description">Описание</label>
         <textarea name="description" id="description" rows="9" required></textarea>
         <br><br>
-        <label for="pic">Select Photos:</label>
-<input type="file" name="pics[]" id="pic" multiple>
-<button id="downloadBtn">Download Selected Photos</button>
+        <label for="files">Select files:</label>
+  <input type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
+  <output></output>
 <br><br>
         <label for="tags">Tags:</label>
         <input type="text" id="tags" name="tags"> <button type="button" id="add-tag">+</button>
@@ -69,37 +69,8 @@
             console.log(addedTags);
         }
         form.onsubmit = (e) => tagsInput.value = addedTags.join(',');
-
-        document.getElementById('downloadBtn').addEventListener('click', function () {
-    // Get the file input element
-    var input = document.getElementById('pic');
-
-    // Get the selected files
-    var files = input.files;
-
-    // Check if any files are selected
-    if (files.length > 0) {
-        // Create a zip file to store the selected photos
-        var zip = new JSZip();
-
-        // Iterate through selected files and add them to the zip file
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            zip.file(file.name, file);
-        }
-
-        // Generate the zip file
-        zip.generateAsync({ type: 'blob' })
-            .then(function (blob) {
-                // Create a download link for the zip file
-                var link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'selected_photos.zip';
-                link.click();
-            });
-    } else {
-        alert('Please select at least one photo.');
-    }
-});
+        const output = document.querySelector("output")
+const input = document.querySelector("input")
+let imagesArray = []
     </script>
 {% endblock %}
