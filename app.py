@@ -181,7 +181,7 @@ def news_by_tag(tag_id: int):
 def machine_list():
     machine_type = request.args.get('type', None)
     if machine_type:
-        stmt = db.select(Machine).where(Machine.type.name == machine_type)
+        stmt = db.select(Machine).where(Machine.type == machine_type)
         machines = db.session.execute(stmt).scalars().all()
 
         return render_template('projects.html', machines=machines)
