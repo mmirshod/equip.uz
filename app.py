@@ -191,7 +191,7 @@ def machine_list():
 
 @app.route("/machines/<int:machine_id>")
 def machine_detail(machine_id: int):
-    return render_template('projects-single.html', machine=db.get_or_404(Machine, machine_id))
+    return render_template('machines_single.html', machine=db.get_or_404(Machine, machine_id))
 
 
 @app.route('/machines/add', methods=['GET', 'POST'])

@@ -319,8 +319,8 @@
 
         <div class="right-container">
             <div class="machine-details">
-              <h2>Vogele Super 1803-2</h2>
-              <h2>Цена: 65 000€</h2>
+              <h2>{{ machine.name }}</h2>
+              <h2>Цена: {{ machine.price }}</h2>
                 <a href="{{ url_for('contact') }}" class="btn btn-primary">Свяжитесь с нами</a>
                 
                     <strong>Или</strong>
@@ -332,15 +332,15 @@
                 
                 <h2>Отчет об осмотре:</h2>
                 <ul>
-                    <li><strong>Производитель: </strong>Vogele</li>
-                    <li><strong>Год: </strong>2008</li>
-                    <li><strong>Модель: </strong>Асфальтоукладчик</li>
-                    <li><strong>Cостояние: </strong>отличное</li>
-                    <li><strong>Моточас: </strong>6645</li>
-                    <li><strong>Вес: </strong>17.8</li>
-                    <li><strong>Марка двигателя: </strong>Perkins</li>
-                    <li><strong>Тип топлива: </strong>Дизель</li>
-                    <li><strong>Дополнительно: </strong>perfect general conditions – 6.445 hours – year 2008 – electric heating perfect</li>
+                    <li><strong>Производитель: </strong>{{ machine.manufacturer }}</li>
+                    <li><strong>Год: </strong>{{ machine.mfg_year }}</li>
+                    <li><strong>Модель: </strong>{{ machine.model }}</li>
+                    <li><strong>Cостояние: </strong>{{ machine.condition }}</li>
+                    <li><strong>Моточас: </strong>{{ machine.hours }}</li>
+                    <li><strong>Вес: </strong>{{ machine.weight }}</li>
+                    <li><strong>Марка двигателя: </strong>{{ machine.engine_type }}</li>
+                    <li><strong>Тип топлива: </strong>{{ machine.oil_type }}</li>
+                    <li><strong>Дополнительно: </strong>{{ machine.desc }}</li>
                 </ul>
             </div>
         </div>
