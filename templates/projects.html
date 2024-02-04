@@ -10,12 +10,12 @@
 
   <!-- Mobile Specific Metas
 ================================================== -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Construction Html5 Template">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name=author content="Themefisher">
-  <meta name=generator content="Themefisher Constra HTML Template v1.0">
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="website for machines">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name=author content="Sobirjonov Axror">
+<meta name=generator content="rcequip.uz">
+<meta name="keywords" content="rcequip.uz,rcequip,equip,машины">
   <!-- Favicon
 ================================================== -->
 <link rel="icon" type="image/png" href="{{ url_for('static', filename="images/equipuzz.png") }}">
@@ -166,153 +166,51 @@
   </header>
   <!--/ Header end -->
 
-    <section id="main-container" class="main-container">
-      <div class="container">
+  <section id="main-container" class="main-container">
+    <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="shuffle-btn-group">
-              <label class="active" for="all">
-                <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
-              </label>
-              <label for="roller">
-                <input type="radio" name="shuffle-filter" id="roller" value="roller">Rollers
-              </label>
-              <label for="paver">
-                <input type="radio" name="shuffle-filter" id="paver" value="paver">Pavers
-              </label>
-              <label for="excavator">
-                <input type="radio" name="shuffle-filter" id="excavator" value="excavator">Excavators
-              </label>
-              <label for="component">
-                <input type="radio" name="shuffle-filter" id="component" value="component">Components
-              </label>
-              <label for="other">
-                <input type="radio" name="shuffle-filter" id="other" value="other">Others
-              </label>
-            </div><!-- project filter end -->
+            <div class="col-12">
+                <div class="shuffle-btn-group">
+                    <!-- Your existing radio buttons for filtering -->
+                    <!-- ... -->
 
+                </div><!-- project filter end -->
 
-            <div class="row shuffle-wrapper" style="">
-              <div class="col-1 shuffle-sizer"></div>
+                <div class="row shuffle-wrapper" style="">
+                    <div class="col-1 shuffle-sizer"></div>
 
+                    {% for machine in machines %}
+                        <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;{{ machine.category }}&quot;]">
+                            <div class="project-img-container">
+                                <a class="gallery-popup" href="{{ url_for('static', filename='pics/' + machine.images[0].path) }}">
+                                    <img class="img-fluid" src="{{ url_for('static', filename='pics/' + machine.images[0].path) }}" alt="project-image">
+                                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
+                                </a>
+                                <div class="project-item-info">
+                                    <div class="project-item-info-content">
+                                        <h3 class="project-item-title">
+                                            <a href="{{ url_for('machine_detail', machine_id=machine.id) }}">{{ machine.name }}</a>
+                                        </h3>
+                                        <p class="project-cat">{{ machine.category }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- shuffle item end -->
+                    {% endfor %}
 
-              <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;,&quot;,&quot;roller&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="{{ url_for('static',filename='images/projects/project1.jpg') }}">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project1.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url_for('prob') }}">Capital Teltway Building</a>
-                      </h3>
-                      <p class="project-cat">Rollers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 1 end -->
-
-              <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;paver&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project2.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project5.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url_for('prob1') }}">Ghum Touch Hospital</a>
-                      </h3>
-                      <p class="project-cat">Pavers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 2 end -->
-
-              <div class="col-lg-4 col-md-6 shuffle-item"
-                data-groups="[&quot;infrastructure&quot;,&quot;paver&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project3.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project3.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="{{ url_for('prob2') }}">TNT East Facility</a>
-                      </h3>
-                      <p class="project-cat">Pavers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 3 end -->
-
-              <div class="col-lg-4 col-md-6 shuffle-item"
-                data-groups="[&quot;education&quot;,&quot;paver&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project4.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project4.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="projects-single.html">Narriot Headquarters</a>
-                      </h3>
-                      <p class="project-cat">Pavers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 4 end -->
-
-              <div class="col-lg-4 col-md-6 shuffle-item"
-                data-groups="[&quot;infrastructure&quot;,&quot;paver&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project5.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project2.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="projects-single.html">Kalas Metrorail</a>
-                      </h3>
-                      <p class="project-cat">Pavers</p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 5 end -->
-
-              <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;excavator&quot;]">
-                <div class="project-img-container">
-                  <a class="gallery-popup" href="images/projects/project6.jpg">
-                    <img class="img-fluid" src="{{ url_for('static',filename='images/projects/project6.jpg') }}" alt="project-image">
-                    <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                  </a>
-                  <div class="project-item-info">
-                    <div class="project-item-info-content">
-                      <h3 class="project-item-title">
-                        <a href="projects-single.html">Ancraft Avenue House</a>
-                      </h3>
-                      <p class="project-cat"> Excavators <p>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- shuffle item 6 end -->
-            </div><!-- shuffle end -->
-          </div>
-  
-          <div class="col-12">
-            <div class="general-btn text-center">
-              <a class="btn btn-primary" href="projects.html">View All Projects</a>
+                </div><!-- shuffle end -->
             </div>
-          </div>
+
+            <div class="col-12">
+                <div class="general-btn text-center">
+                    <a class="btn btn-primary" href="{{ url_for('machine_list') }}">View All Projects</a>
+                </div>
+            </div>
 
         </div><!-- Content row end -->
 
-      </div><!-- Conatiner end -->
-    </section><!-- Main container end -->
+    </div><!-- Container end -->
+</section><!-- Main container end -->
 
 
     <footer id="footer" class="footer bg-overlay">
