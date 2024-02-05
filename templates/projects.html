@@ -177,19 +177,19 @@
                       <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
                     </label>
                     <label for="roller">
-                      <input type="radio" name="shuffle-filter" id="roller" value="roller">Rollers
+                      <input type="radio" name="shuffle-filter" id="roller" value="rollers">Rollers
                     </label>
                     <label for="paver">
-                      <input type="radio" name="shuffle-filter" id="paver" value="paver">Pavers
+                      <input type="radio" name="shuffle-filter" id="paver" value="pavers">Pavers
                     </label>
                     <label for="excavator">
-                      <input type="radio" name="shuffle-filter" id="excavator" value="excavator">Excavators
+                      <input type="radio" name="shuffle-filter" id="excavator" value="excavators">Excavators
                     </label>
                     <label for="component">
-                      <input type="radio" name="shuffle-filter" id="component" value="component">Components
+                      <input type="radio" name="shuffle-filter" id="component" value="components">Components
                     </label>
                     <label for="other">
-                      <input type="radio" name="shuffle-filter" id="other" value="other">Others
+                      <input type="radio" name="shuffle-filter" id="other" value="others">Others
                     </label>
 
                 </div><!-- project filter end -->
@@ -198,7 +198,7 @@
                     <div class="col-1 shuffle-sizer"></div>
 
                     {% for machine in machines | sort(attribute='id', reverse=true) %}
-                        <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;{{ machine.category }}&quot;]">
+                        <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;{{ machine.machine_type }}&quot;]">
                             <div class="project-img-container">
                               <div class="conconimg">
                                 <a class="gallery-popup" href="{{ url_for('static', filename='pics/' + machine.images[0].path) }}">
@@ -211,7 +211,7 @@
                                         <h3 class="project-item-title">
                                             <a href="{{ url_for('machine_detail', machine_id=machine.id) }}">{{ machine.name }}</a>
                                         </h3>
-                                        <p class="project-cat">{{ machine.category }}</p>
+                                        <p class="project-cat">{{ machine.machine_type }}</p>
                                     </div>
                                 </div>
                             </div>
