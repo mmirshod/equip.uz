@@ -191,9 +191,11 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="latest-post">
               <div class="latest-post-media">
+                <div class="conconimg">
                 <a href="{{ url_for('news_detail', news_id=n['id']) }}" class="latest-post-img">
                   <img loading="lazy" class="img-fluid" src="{{ url_for('static', filename=path) }}" alt="img">
                 </a>
+                </div>
               </div>
               <div class="post-body">
                 <h4 class="post-title">

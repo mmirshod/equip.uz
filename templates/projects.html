@@ -173,19 +173,39 @@
                 <div class="shuffle-btn-group">
                     <!-- Your existing radio buttons for filtering -->
                     <!-- ... -->
+                    <label class="active" for="all">
+                      <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
+                    </label>
+                    <label for="roller">
+                      <input type="radio" name="shuffle-filter" id="roller" value="roller">Rollers
+                    </label>
+                    <label for="paver">
+                      <input type="radio" name="shuffle-filter" id="paver" value="paver">Pavers
+                    </label>
+                    <label for="excavator">
+                      <input type="radio" name="shuffle-filter" id="excavator" value="excavator">Excavators
+                    </label>
+                    <label for="component">
+                      <input type="radio" name="shuffle-filter" id="component" value="component">Components
+                    </label>
+                    <label for="other">
+                      <input type="radio" name="shuffle-filter" id="other" value="other">Others
+                    </label>
 
                 </div><!-- project filter end -->
 
                 <div class="row shuffle-wrapper" style="">
                     <div class="col-1 shuffle-sizer"></div>
 
-                    {% for machine in machines %}
+                    {% for machine in machines | sort(attribute='id', reverse=true) %}
                         <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;{{ machine.category }}&quot;]">
                             <div class="project-img-container">
+                              <div class="conconimg">
                                 <a class="gallery-popup" href="{{ url_for('static', filename='pics/' + machine.images[0].path) }}">
                                     <img class="img-fluid" src="{{ url_for('static', filename='pics/' + machine.images[0].path) }}" alt="project-image">
                                     <span class="gallery-icon"><i class="fa fa-plus"></i></span>
                                 </a>
+                              </div>
                                 <div class="project-item-info">
                                     <div class="project-item-info-content">
                                         <h3 class="project-item-title">
@@ -211,6 +231,7 @@
 
     </div><!-- Container end -->
 </section><!-- Main container end -->
+
 
 
     <footer id="footer" class="footer bg-overlay">

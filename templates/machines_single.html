@@ -166,238 +166,212 @@
     <main>
         <!DOCTYPE html>
 
-<body>
-
-    
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-    
-        #gallery {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px; /* Adjust as needed */
-        }
-    
-        .default-container {
-            flex-grow: 1;
-            display: flex;
-        }
-    
-        .left-container {
-            margin-left: 10px;
-            flex: 1;
-            max-height: 100%;
-            overflow: hidden;
-        }
-    
-        #mainPhotoWrapper {
-            position: relative;
-            max-width: 80%;
-            margin-bottom: 10px;
-        }
-    
-        #mainPhoto {
-            width: 100%;
-            border: 2px solid #333;
-            transition: transform 0.3s ease-in-out;
-        }
-    
-        .carousel-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            z-index: 1;
-        }
-    
-        .arrow-button {
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-  line-height: 39px;
-  background: #000000;
-  color: #fff;
-  display: inline-block;
-  padding: 0 15px;
-  margin: 0 0 10px;
-            outline: none;
-        }
-    
-        .thumbnails-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            max-height: calc(100% - 10px); /* Adjust as needed */
-            overflow-y: auto;
-        }
-    
-        .thumbnail {
-            max-width: calc(50% - 5px); /* Adjust as needed */
-            max-height: 100px;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-        }
-    
-        .thumbnail:hover {
-            transform: scale(1.1);
-        }
-    
-        .right-container {
-            flex: 1;
-            max-height: 100%;
-            overflow-y: auto;
-        }
-    
-        .machine-details::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #f0f0f0;
-            z-index: -1;
-        }
-    
-        .machine-details {
-            max-width: 400px;
-            margin: auto;
-            text-align: left;
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-        }
-    
-        .btn-primary {
-            display: block;
-            margin-bottom: 10px;
-        }
-    
-        h2 {
-            color: #333;
-            margin-top: 0;
-        }
-    </style>
-</head>
-<body>
-  <br>
- 
-
-  <div id="gallery">
-    <div class="default-container">
-        <div class="left-container">
-            <div class="photo-wrapper">
-                <!-- Main Photo -->
-                <div id="mainPhotoWrapper">
-                    <img src="{{ url_for('static', filename='images/projects/project5.jpg') }}" alt="Main Car Photo" id="mainPhoto">
-                    <div class="carousel-controls">
-                        <button class="arrow-button" onclick="prevMedia()">&#9664;</button>
-                        <button class="arrow-button" onclick="nextMedia()">&#9654;</button>
-                    </div>
-                </div>
-                <div class="thumbnails-container">
-                    <!-- Thumbnail Photos -->
-                    <img src="{{ url_for('static', filename='images/projects/project5.jpg') }}" alt="Thumbnail 1" class="thumbnail" onclick="swapMedia(0)">
-                    <img src="{{ url_for('static', filename='images/projects/project51.jpg') }}" alt="Thumbnail 2" class="thumbnail" onclick="swapMedia(1)">
-                    <img src="{{ url_for('static', filename='images/projects/project52.jpg') }}" alt="Thumbnail 3" class="thumbnail" onclick="swapMedia(2)">
-                    <img src="{{ url_for('static', filename='images/projects/project53.jpg') }}" alt="Thumbnail 1" class="thumbnail" onclick="swapMedia(3)">
-                    <img src="{{ url_for('static', filename='images/projects/project54.jpg') }}" alt="Thumbnail 1" class="thumbnail" onclick="swapMedia(4)">
-                    <img src="{{ url_for('static', filename='images/projects/project55.jpg') }}" alt="Thumbnail 2" class="thumbnail" onclick="swapMedia(5)">
-                    <img src="{{ url_for('static', filename='images/projects/project56.jpg') }}" alt="Thumbnail 3" class="thumbnail" onclick="swapMedia(6)">
-                    <!-- Add more thumbnails as needed -->
-                </div>
-            
-        </div>
-        </div>
-
-        <div class="right-container">
-            <div class="machine-details">
-              <h2>{{ machine.name }}</h2>
-              <h2>Цена: {{ machine.price }}</h2>
-                <a href="{{ url_for('contact') }}" class="btn btn-primary">Свяжитесь с нами</a>
-                
-                    <strong>Или</strong>
-                    
-              <h3><a href="tel:+998993331313" class="nav-link">(+998)99-333-13-13</a></h3>
-                    
-              
-                
-                
-                <h2>Отчет об осмотре:</h2>
-                <ul>
-                    <li><strong>Производитель: </strong>{{ machine.manufacturer }}</li>
-                    <li><strong>Год: </strong>{{ machine.mfg_year }}</li>
-                    <li><strong>Модель: </strong>{{ machine.model }}</li>
-                    <li><strong>Cостояние: </strong>{{ machine.condition }}</li>
-                    <li><strong>Моточас: </strong>{{ machine.hours }}</li>
-                    <li><strong>Вес: </strong>{{ machine.weight }}</li>
-                    <li><strong>Марка двигателя: </strong>{{ machine.engine_type }}</li>
-                    <li><strong>Тип топлива: </strong>{{ machine.oil_type }}</li>
-                    <li><strong>Дополнительно: </strong>{{ machine.desc }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    var currentMediaIndex = 0;
-    var mediaItems = [
-        "{{ url_for('static', filename='images/projects/project5.jpg') }}",
-        "{{ url_for('static', filename='images/projects/project51.jpg') }}",
-        "{{ url_for('static', filename='images/projects/project52.jpg') }}",
-        "{{ url_for('static', filename='images/projects/project53.jpg') }}",
-        "{{ url_for('static', filename='images/projects/project54.jpg') }}",
-        "{{ url_for('static', filename='images/projects/project55.jpg') }}",
-        "{{ url_for('static', filename='images/projects/project56.jpg') }}",
-        // Add more media URLs as needed
-    ];
-
-    function swapMedia(index) {
-        var mainPhoto = document.getElementById('mainPhoto');
-        mainPhoto.src = mediaItems[index];
-        currentMediaIndex = index;
-        showThumbnail(currentMediaIndex);
-    }
-
-    function nextMedia() {
-        currentMediaIndex = (currentMediaIndex + 1) % mediaItems.length;
-        swapMedia(currentMediaIndex);
-    }
-
-    function prevMedia() {
-        currentMediaIndex = (currentMediaIndex - 1 + mediaItems.length) % mediaItems.length;
-        swapMedia(currentMediaIndex);
-    }
-
-    function showThumbnail(index) {
-        var thumbnails = document.querySelectorAll('.thumbnail');
-        thumbnails.forEach(function (thumbnail, i) {
-            if (i === index) {
-                thumbnail.classList.add('selected');
-            } else {
-                thumbnail.classList.remove('selected');
-            }
-        });
-    }
-
-    // Show the first media item initially
-    swapMedia(currentMediaIndex);
-</script>
-
-
-
-
-
-
-</body>
+        <body>
+          <style>
+              body {
+                  margin: 0;
+                  display: flex;
+                  flex-direction: column;
+                  min-height: 100vh;
+              }
+      
+              #gallery {
+                  flex-grow: 1;
+                  display: flex;
+                  flex-direction: column;
+                  margin-bottom: 20px; /* Adjust as needed */
+              }
+      
+              .default-container {
+                  flex-grow: 1;
+                  display: flex;
+              }
+      
+              .left-container {
+                  margin-left: 10px;
+                  flex: 1;
+                  max-height: 100%;
+                  overflow: hidden;
+              }
+      
+              #mainPhotoWrapper {
+                  position: relative;
+                  max-width: 80%;
+                  margin-bottom: 10px;
+                  margin-top: 10px;
+              }
+      
+              #mainPhoto {
+                  width: 100%;
+                  border: 2px solid #333;
+                  transition: transform 0.3s ease-in-out;
+                  max-height: 500px; /* Adjust as needed */
+                  object-fit: contain;
+              }
+      
+              .carousel-controls {
+                  position: absolute;
+                  top: 50%;
+                  width: 100%;
+                  display: flex;
+                  justify-content: space-between;
+                  z-index: 1;
+              }
+      
+              .arrow-button {
+                  border: none;
+                  cursor: pointer;
+                  font-size: 16px;
+                  line-height: 39px;
+                  background: #000000;
+                  color: #fff;
+                  display: inline-block;
+                  padding: 0 15px;
+                  margin: 0 0 10px;
+                  outline: none;
+              }
+      
+              .thumbnails-container {
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 5px;
+                  max-height: calc(100% - 10px); /* Adjust as needed */
+                  overflow-y: auto;
+              }
+      
+              .thumbnail {
+                  max-width: calc(50% - 5px); /* Adjust as needed */
+                  max-height: 100px;
+                  cursor: pointer;
+                  transition: transform 0.2s ease-in-out;
+              }
+      
+              .thumbnail:hover {
+                  transform: scale(1.1);
+              }
+      
+              .right-container {
+                  flex: 1;
+                  max-height: 100%;
+                  overflow-y: auto;
+              }
+      
+              .machine-details::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #f0f0f0;
+                  z-index: -1;
+              }
+      
+              .machine-details {
+                  max-width: 400px;
+                  margin: auto;
+                  text-align: left;
+                  position: relative;
+                  z-index: 1;
+                  padding: 20px;
+              }
+      
+              .btn-primary {
+                  display: block;
+                  margin-bottom: 10px;
+              }
+      
+              h2 {
+                  color: #333;
+                  margin-top: 0;
+              }
+          </style>
+      
+          <div id="gallery">
+              <div class="default-container">
+                  <div class="left-container">
+                      <div class="photo-wrapper">
+                          <div id="mainPhotoWrapper">
+                              <img class="img-fluid" src="{{ url_for('static', filename='pics/' + machine.images[0].path) }}" alt="project-image" id="mainPhoto">
+                              <div class="carousel-controls">
+                                  <button class="arrow-button" onclick="prevMedia()">&#9664;</button>
+                                  <button class="arrow-button" onclick="nextMedia()">&#9654;</button>
+                              </div>
+                          </div>
+                          <div class="thumbnails-container" onclick="thumbnailClick(event)">
+                              <!-- Thumbnail Photos -->
+                              {% for image in machine.images %}
+                                  <img class="img-fluid thumbnail" src="{{ url_for('static', filename='pics/' + image.path) }}" alt="project-image" onclick="swapMedia({{ loop.index - 1 }})">
+                              {% endfor %}
+                          </div>
+                      </div>
+                  </div>
+      
+              <div class="right-container">
+                  <div class="machine-details">
+                      <h2>{{ machine.name }}</h2>
+                      <h2>Цена: {{ machine.price }}</h2>
+                      <a href="{{ url_for('contact') }}" class="btn btn-primary">Свяжитесь с нами</a>
+                      <strong>Или</strong>
+                      <h3><a href="tel:+998993331313" class="nav-link">(+998)99-333-13-13</a></h3>
+                      <h2>Отчет об осмотре:</h2>
+                      <ul>
+                          <li><strong>Производитель: </strong>{{ machine.manufacturer }}</li>
+                          <li><strong>Год: </strong>{{ machine.mfg_year }}</li>
+                          <li><strong>Модель: </strong>{{ machine.model }}</li>
+                          <li><strong>Cостояние: </strong>{{ machine.condition }}</li>
+                          <li><strong>Моточас: </strong>{{ machine.hours }}</li>
+                          <li><strong>Вес: </strong>{{ machine.weight }}</li>
+                          <li><strong>Марка двигателя: </strong>{{ machine.engine_type }}</li>
+                          <li><strong>Тип топлива: </strong>{{ machine.oil_type }}</li>
+                          <li><strong>Дополнительно: </strong>{{ machine.desc }}</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          </div>
+      
+          <script>
+              var currentMediaIndex = 0;
+              var mediaItems = [
+                  {% for image in machine.images %}
+                      "{{ url_for('static', filename='pics/' + image.path) }}",
+                  {% endfor %}
+              ];
+      
+              function swapMedia(index) {
+                  var mainPhoto = document.getElementById('mainPhoto');
+                  mainPhoto.src = mediaItems[index];
+                  currentMediaIndex = index;
+                  showThumbnail(currentMediaIndex);
+              }
+      
+              function nextMedia() {
+                  currentMediaIndex = (currentMediaIndex + 1) % mediaItems.length;
+                  swapMedia(currentMediaIndex);
+              }
+      
+              function prevMedia() {
+                  currentMediaIndex = (currentMediaIndex - 1 + mediaItems.length) % mediaItems.length;
+                  swapMedia(currentMediaIndex);
+              }
+      
+              function showThumbnail(index) {
+                  var thumbnails = document.querySelectorAll('.thumbnail');
+                  thumbnails.forEach(function (thumbnail, i) {
+                      if (i === index) {
+                          thumbnail.classList.add('selected');
+                      } else {
+                          thumbnail.classList.remove('selected');
+                      }
+                  });
+              }
+      
+              // Show the first media item initially
+              swapMedia(currentMediaIndex);
+          </script>
+      </body>
+      
 
       {% block content %}
       {% endblock %}
