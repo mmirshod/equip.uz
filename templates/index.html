@@ -252,11 +252,23 @@
                   <br>
                   <!--<div style="display: flex !important; flex-direction: row !important; justify-content: center !important; align-items: center !important;gap: 50px !important;margin: 0 auto !important;">-->
                     <div class="container-A-2005">
-                    <p><a href="{{ url_for("machine_list")}}"  class="image-link"><img src="{{ url_for('static', filename='images/equip3.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>
-                    <p><a href="{{ url_for("machine_list")}}" class="image-link"><img src="{{ url_for('static', filename='images/equip4.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>
-                    <p><a href="{{ url_for("machine_list")}}" class="image-link"><img src="{{ url_for('static', filename='images/equip5.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>   
-                    <p><a href="{{ url_for("machine_list")}}" class="image-link"><img src="{{ url_for('static', filename='images/equip2.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>                 
-                  </div>
+                      <p><a href="{{ url_for("machine_list", category='rollers') }}" class="image-link"><img src="{{ url_for('static', filename='images/equip3.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""></a></p>
+                      <p><a href="{{ url_for("machine_list", category='rollers') }}" class="image-link"><img src="{{ url_for('static', filename='images/equip4.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""></a></p>
+                      <p><a href="{{ url_for("machine_list", category='rollers') }}" class="image-link"><img src="{{ url_for('static', filename='images/equip5.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""></a></p>
+                      <p><a href="{{ url_for("machine_list", category='rollers') }}" class="image-link"><img src="{{ url_for('static', filename='images/equip2.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""></a></p>
+                  </div>    
+                  <script>             
+                  document.addEventListener('DOMContentLoaded', function() {
+                    // Select the second label using the specified path
+                    var rollersLabel = document.querySelector("#main-container > div > div > div:nth-child(1) > div.shuffle-btn-group > label:nth-child(2)");
+                
+                    // Check if the label is found
+                    if (rollersLabel) {
+                        // Trigger a click event on the label
+                        rollersLabel.click();
+                    }
+                });
+              </script>         
                 </div>
                   <!--<p><a href="{{ url_for("machine_list")}}" class="slider btn btn-primary border"><img <img src="{{ url_for('static', filename='images/equip2.jpg') }}" style="height: 100px !important; width: 150px !important;" alt="" srcset=""> </a></p>-->
                 </p>

@@ -170,29 +170,27 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="shuffle-btn-group">
-                    <!-- Your existing radio buttons for filtering -->
-                    <!-- ... -->
-                    <label class="active" for="all">
-                      <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
-                    </label>
-                    <label for="roller">
-                      <input type="radio" name="shuffle-filter" id="roller" value="rollers">Rollers
-                    </label>
-                    <label for="paver">
-                      <input type="radio" name="shuffle-filter" id="paver" value="pavers">Pavers
-                    </label>
-                    <label for="excavator">
-                      <input type="radio" name="shuffle-filter" id="excavator" value="excavators">Excavators
-                    </label>
-                    <label for="component">
-                      <input type="radio" name="shuffle-filter" id="component" value="components">Components
-                    </label>
-                    <label for="other">
-                      <input type="radio" name="shuffle-filter" id="other" value="others">Others
-                    </label>
-
-                </div><!-- project filter end -->
+              <div class="shuffle-btn-group">
+                <label class="active" for="all">
+                    <input type="radio" name="shuffle-filter" id="all" value="all" {% if category == 'all' %}checked{% endif %}>Show All
+                </label>
+                <label for="rollers">
+                    <input type="radio" name="shuffle-filter" id="rollers" value="rollers" {% if category == 'rollers' %}checked{% endif %}>Rollers
+                </label>
+                <label for="pavers">
+                    <input type="radio" name="shuffle-filter" id="pavers" value="pavers" {% if category == 'pavers' %}checked{% endif %}>Pavers
+                </label>
+                <label for="excavators">
+                    <input type="radio" name="shuffle-filter" id="excavators" value="excavators" {% if category == 'excavators' %}checked{% endif %}>Excavators
+                </label>
+                <label for="components">
+                    <input type="radio" name="shuffle-filter" id="components" value="components" {% if category == 'components' %}checked{% endif %}>Components
+                </label>
+                <label for="others">
+                    <input type="radio" name="shuffle-filter" id="others" value="others" {% if category == 'others' %}checked{% endif %}>Others
+                </label>
+            </div><!-- project filter end -->
+            
 
                 <div class="row shuffle-wrapper" style="">
                     <div class="col-1 shuffle-sizer"></div>
