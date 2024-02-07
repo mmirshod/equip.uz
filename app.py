@@ -208,16 +208,14 @@ def machine_add():
         machine_type = request.form.get('type')
         image_objects = []
 
-        c = 0
         for img in images:
-            file_path = f'machines/{model}___{str(c)}___{img.filename}'
+            file_path = f'machines/{model}___{img.filename}'
             img.save(os.path.join(app.config['UPLOAD_FOLDER'], file_path))
             img_obj = ImagePath(
                 path=file_path,
             )
             db.session.add(img_obj)
             image_objects.append(img_obj)
-            c += 1
 
         machine = Machine(
             name=name,
