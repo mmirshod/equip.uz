@@ -210,7 +210,7 @@ def machine_add():
 
         c = 0
         for img in images:
-            file_path = f'machines/{model}___{img.filename}___{str(c)}'
+            file_path = f'machines/{model}___{str(c)}___{img.filename}'
             img.save(os.path.join(app.config['UPLOAD_FOLDER'], file_path))
             img_obj = ImagePath(
                 path=file_path,
