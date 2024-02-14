@@ -5,7 +5,7 @@ from os.path import join
 from urllib.parse import urlencode, quote_plus
 
 from authlib.integrations.flask_client import OAuth
-from flask import Flask, redirect, render_template, session, url_for, request
+from flask import Flask, redirect, render_template, session, url_for, request, abort
 from flask_ckeditor import CKEditor
 from werkzeug.utils import secure_filename
 
@@ -40,7 +40,7 @@ def base():
 @app.route('/')
 def index():
     posts = [_[0].short() for _ in
-             db.session.execute(db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()]
+            db.session.execute(db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()]
     return render_template("index.html", news=posts)
 
 
@@ -128,7 +128,7 @@ def news_edit(news_id: int):
     return render_template('forms/edit_news.html')
 
 
-@app.route("/news/<int:news_id>/delete", methods=['GET', 'DELETE'])
+@app.route("/news/<int:news_id>/delete")
 def news_delete(news_id: int):
     post = db.get_or_404(Post, news_id)
     os.remove(join(app.config['UPLOAD_FOLDER'], post.pic))
@@ -144,18 +144,18 @@ def news_detail(news_id: int) -> str:
     post = db.session.get(Post, news_id)
 
     return render_template('news-single.html',
-                           post=post,
-                           recent_news=[_[0].short() for _ in db.session.execute(
-                                   db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()],
-                           all_tags=[_[0].format() for _ in db.session.execute(
-                                   db.select(Tag).order_by(Tag.name.desc())).fetchall()]
-                           )
+                            post=post,
+                            recent_news=[_[0].short() for _ in db.session.execute(
+                                    db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()],
+                            all_tags=[_[0].format() for _ in db.session.execute(
+                                    db.select(Tag).order_by(Tag.name.desc())).fetchall()]
+                            )
 
 
 @app.route("/news")
 def news_list() -> str:
     posts = [_[0].short() for _ in
-             db.session.execute(db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()]
+            db.session.execute(db.select(Post).order_by(Post.date_added.desc()).limit(6)).fetchall()]
     return render_template("news-right-sidebar.html", news=posts)
 
 
@@ -243,7 +243,22 @@ def machine_add():
 
 @app.route("/machines/delete/<int:machine_id>")
 def machine_delete(machine_id: int):
-    ...
+    try:
+        machine = db.get_or_404(Machine, machine_id)
+
+        for image in machine.images:
+            os.remove(join(app.config['UPLOAD_FOLDER'], secure_filename(image.path)))
+
+        db.session.delete(machine)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+    except Exception as e:
+        print(e)
+        db.session.rollback()
+        abort(404)
+    finally:
+        db.session.close()
 
 
 @app.route("/machines/edit/<int:machine_id>")

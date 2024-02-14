@@ -64,7 +64,7 @@ class Post(db.Model):
     likes = db.Column(db.Integer(), default=0)
 
     tags = db.relationship('Tag', secondary=post_tags, lazy='subquery',
-                           backref=db.backref('posts', lazy=True), single_parent=True, cascade='all, delete-orphan')
+                            backref=db.backref('posts', lazy=True), single_parent=True, cascade='all, delete-orphan')
     comments = db.relationship('Comment', lazy=True, backref='post')
 
     def short(self):
@@ -137,4 +137,4 @@ class ImagePath(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
     path = db.Column(db.String(), nullable=False)
-    machine_id = db.Column(db.Integer(), db.ForeignKey('machines.id'), nullable=False)
+    machine_id = db.Column(db.Integer(), db.ForeignKey('machines.id', ondelete='CASCADE'), nullable=False, cascade='all, delete-orphan')
