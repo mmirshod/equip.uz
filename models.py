@@ -3,8 +3,7 @@ from datetime import datetime
 
 from dotenv import load_dotenv, find_dotenv
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import text
-
+from flask_migrate import Migrate
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -15,6 +14,7 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = "sqlite:///{}".format(os.path.join(PROJECT_DIR, DB_NAME))
 
 db = SQLAlchemy()
+migrate = Migrate()
 
 
 def setup_db(app):
@@ -27,6 +27,7 @@ def setup_db(app):
         app.config['SQLALCHEMY_NOTIFICATIONS'] = False
         db.app = app
         db.init_app(app)
+        migrate.init_app(app=app, db=db)
 
 
 def db_drop_and_create_all(app):
@@ -129,7 +130,7 @@ class Machine(db.Model):
 
     date_added = db.Column(db.DateTime, default=datetime.now())
     date_updated = db.Column(db.DateTime, default=datetime.now())
-    images = db.relationship('ImagePath', backref='machine', lazy=True)
+    images = db.relationship('ImagePath', backref=db.backref('machine', cascade='all, delete-orphan'), lazy=True)
 
 
 class ImagePath(db.Model):
@@ -137,4 +138,4 @@ class ImagePath(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
     path = db.Column(db.String(), nullable=False)
-    machine_id = db.Column(db.Integer(), db.ForeignKey('machines.id', ondelete='CASCADE'), nullable=False, cascade='all, delete-orphan')
+    machine_id = db.Column(db.Integer(), db.ForeignKey('machines.id', ondelete='CASCADE'), nullable=False)

@@ -16,7 +16,6 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 setup_db(app)
-db_drop_and_create_all(app)
 
 ckeditor = CKEditor(app)
 
@@ -263,8 +262,63 @@ def machine_delete(machine_id: int):
 
 @app.route("/machines/edit/<int:machine_id>")
 def machine_edit(machine_id: int):
-    ...
+    try: 
+        machine = db.get_or_404(Machine, machine_id)
+    except:
+        abort(404)
 
+    if request.method == 'POST':
+        # if 'images' not in request.files:
+        #     raise Exception('No file part')
+
+        # images = request.files.getlist('images')
+        condition = request.form.get('condition')
+        engine = request.form.get('engine')
+        oil_type = request.form.get('fuel')
+        name = request.form.get('name')
+        model = request.form.get('model')
+        desc = request.form.get('description')
+        price = float(request.form.get('cost'))
+        mfg_year = int(request.form.get('mfg_year'))
+        manufacturer = request.form.get('manufacturer')
+        hours = int(request.form.get('hours'))
+        weight = float(request.form.get('weight'))
+        # machine_type = request.form.get('type')
+        # image_objects = []
+
+        # for img in images:
+        #     file_path = f'machines/{model}___{img.filename}'
+        #     img.save(os.path.join(app.config['UPLOAD_FOLDER'], file_path))
+        #     img_obj = ImagePath(
+        #         path=file_path,
+        #     )
+        #     db.session.add(img_obj)
+        #     image_objects.append(img_obj)
+
+        try:
+            machine.name=name
+            machine.desc=desc
+            machine.price=price
+            machine.mfg_year=mfg_year
+            machine.manufacturer=manufacturer
+            machine.hours=hours
+            machine.weight=weight
+            # machine_type=machine_type,
+            machine.model=model
+            machine.oil_type=oil_type
+            machine.engine_type=engine
+            machine.condition=condition
+
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            print(e)
+            abort(500)
+
+        return redirect(url_for('index'))
+
+    # @TODO: Create form to edit machines
+    return render_template('forms/edit_machine.html', machine=machine)
 
 @app.route('/about')
 def about():
